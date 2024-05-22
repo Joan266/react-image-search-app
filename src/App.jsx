@@ -1,7 +1,8 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 
 // pages & components
-import { Homepage } from './pages/Homepage';
+import { HomePage } from './pages/HomePage.jsx';
+import { FavPage } from './pages/FavPage';
 import { NavComponent } from './components/NavComponent.jsx';
 import { FooterComponent } from './components/FooterComponent.jsx';
 
@@ -23,8 +24,8 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route element={<Layout />}>
-            <Route path="/" element={<Navigate to="/homepage" />} />
-            <Route path="/homepage" element={<Homepage />} />
+            <Route path="/" element={<HomePage />} />
+            <Route path="/fav" element={<FavPage/>} />
           </Route>
         </Routes>
       </BrowserRouter>
