@@ -1,0 +1,23 @@
+.nav{
+  background-color: transparent;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 5%;
+}
+.nav__logo {
+  color:white;
+}
+.nav__list {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.nav__list__option {
+  margin-right: 4em;
+}
