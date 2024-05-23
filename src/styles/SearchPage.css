@@ -1,0 +1,18 @@
+.search {
+  height: 100%;
+  width: 100%;
+  margin-top: 5%;
+}
+.search__header {
+  height: 100px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+}
+
+.search__header__title {
+  font-weight: 700;
+  font-size: 1.65rem;
+  margin-left: 2em;
+}

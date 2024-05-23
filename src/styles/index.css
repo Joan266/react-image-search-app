@@ -1,5 +1,8 @@
-@import url("./Nav.css");
-@import url("./PhotoGallery.css");
+@import url("./NavComponent.css");
+@import url("./PhotoGalleryComponent.css");
+@import url("./HomePage.css");
+@import url("./SearchBarComponent.css");
+@import url("./SearchPage.css");
 
 /* google font */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=VT323&display=swap');
@@ -14,4 +17,7 @@ body {
 }
 .App {
   height: 100%;
+}
+h1,p{
+  margin:0;
 }

@@ -8,6 +8,7 @@ import './styles/index.css';
 // pages & components
 import { HomePage } from './pages/HomePage.jsx';
 import { FavPage } from './pages/FavPage';
+import { SearchPage } from './pages/SearchPage.jsx';
 
 import { LayoutComponent } from './components/LayoutComponent.jsx';
 
@@ -20,6 +21,7 @@ app.render(
           <Route element={<LayoutComponent />}>
             <Route path="/" element={<HomePage />} />
             <Route path="/fav" element={<FavPage/>} />
+            <Route path="/search/:query" element={<SearchPage/>} />
           </Route>
         </Routes>
       </BrowserRouter>

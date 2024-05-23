@@ -1,0 +1,28 @@
+.home {
+  height: 100%;
+  width: 100%;
+}
+.home__header {
+  height: 450px;
+  width: 100%;
+  color: white;
+  background-color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.home__header__content {
+  width: 40em;
+}
+.home__header__content__title {
+  font-weight: 700;
+  font-size: 1.65rem;
+}
+.home__header__content__subtitle {
+  font-weight: 400;
+  font-size: 0.65rem;
+  margin-top: 0.8em;
+}
+.home__header__content__search-bar-container {
+  
+}
