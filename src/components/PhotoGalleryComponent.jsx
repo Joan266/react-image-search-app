@@ -1,15 +1,9 @@
-import { useEffect } from "react";
 import { useSearchPhotos } from "../hooks/useSearchPhotos";
 
 export const PhotoGalleryComponent = () => {
   const { searchData, searchStatus, searchError } = useSearchPhotos();
-
-  useEffect(() => {
-    console.log(searchData, searchStatus, searchError);
-  }, [searchData, searchStatus, searchError]);
-
   return (
-    <div className="gallery">
+    <section className="gallery">
       {searchStatus === "pending" ? (
         <p>LOADING</p>
       ) : searchStatus === "rejected" ? (
@@ -25,6 +19,6 @@ export const PhotoGalleryComponent = () => {
           </figure>
         ))
       ) : null}
-    </div>
+    </section>
   );
 };
