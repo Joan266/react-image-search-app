@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate, Outlet } from 'react-router-dom';
 
 // pages & components
 import { HomePage } from './pages/HomePage.jsx';
@@ -6,12 +6,12 @@ import { FavPage } from './pages/FavPage';
 import { NavComponent } from './components/NavComponent.jsx';
 import { FooterComponent } from './components/FooterComponent.jsx';
 
-const Layout = ({children}) => {
+const Layout = () => {
   return (
     <div className='layout'>
       <NavComponent />
       <div id='main' className='main'>
-        {children}
+        <Outlet/>
       </div>
       <FooterComponent/>
     </div>
