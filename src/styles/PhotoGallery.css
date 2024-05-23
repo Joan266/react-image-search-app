@@ -1,0 +1,17 @@
+.gallery {
+  column-count: auto;
+  column-gap: 0.5em;
+  column-width: 350px;
+  margin: 5em 2em;
+}
+
+.gallery__item {
+  height: auto;
+  margin: 0;
+}
+
+.gallery__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
