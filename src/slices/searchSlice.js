@@ -69,11 +69,11 @@ const searchSlice = createAppSlice({
         },
       }
     ),
-    resetStateData(state) {
+    resetSearchStateData(state) {
       state.data = [];
     },
   }),
 })
 
-export const { searchUnsPhotosByQuery, getRandomUnsPhotos, resetStateData } = searchSlice.actions;
+export const { searchUnsPhotosByQuery, getRandomUnsPhotos, resetSearchStateData } = searchSlice.actions;
 export const searchSliceReducer = searchSlice.reducer;

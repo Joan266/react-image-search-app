@@ -1,10 +1,10 @@
-import { useSearchPhotos } from "../hooks/useSearchPhotos";
+import { useSearchDataState } from "../hooks/useSearchDataState";
 import downloadIcon from "../public/download.svg";
 import saveIcon from "../public/save.svg";
 import FileSaver from "file-saver";
 
 export const PhotoGalleryComponent = () => {
-  const { searchData, searchStatus, searchError } = useSearchPhotos();
+  const { searchData, searchStatus, searchError } = useSearchDataState();
 
   const handleDownload = (image) => {
     FileSaver.saveAs(image.urls.raw, "oxygen-photo.jpg");
