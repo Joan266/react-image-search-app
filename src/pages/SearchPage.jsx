@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
-import { searchApiPhotosByQuery } from "../slices/searchSlice";
+import { searchUnsPhotosByQuery } from "../slices/searchSlice";
 import { PhotoGalleryComponent } from "../components/PhotoGalleryComponent";
 
 export const SearchPage = () => {
@@ -10,8 +10,8 @@ export const SearchPage = () => {
 
   useEffect(() => {
     if (query) {
-      dispatch(searchApiPhotosByQuery(query));
-    }
+      dispatch(searchUnsPhotosByQuery(query));
+    } 
   }, [dispatch, query]);
 
   return (

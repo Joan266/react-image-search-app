@@ -1,17 +1,22 @@
+import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { searchApiPhotosByQuery } from "../slices/searchSlice";
+import { useLocation } from "react-router-dom";
+import { resetStateData, getRandomUnsPhotos } from '../slices/searchSlice'; 
 
 export const useSearchPhotos = () => {
-  const dispatch = useDispatch();
-  
   const { status, data, error } = useSelector((state) => state.search);
+  const dispatch = useDispatch();
+  const location = useLocation();
 
   useEffect(() => {
-    if (status === "idle") {
-      dispatch(searchApiPhotosByQuery());
-    } 
-  }, [status, dispatch]);
+    if(location.pathname === "/") {
+      if (data.length !== 0) {dispatch(resetStateData());}
+      dispatch(getRandomUnsPhotos());
+    }
+  }, [location]);
+  useEffect(()=>{
+    console.log(data)
+  },[data])
 
-  return { searchData: data, searchStatus: status, searchError: error};
+  return { searchData: data, searchStatus: status, searchError: error };
 };

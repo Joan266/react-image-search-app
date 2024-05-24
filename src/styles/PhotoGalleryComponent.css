@@ -21,7 +21,7 @@
   display: none;
 }
 .gallery__item__mask__button {
-  border: 1px solid white;
+  border: 1px solid rgba(255, 255, 255, 0.58);
   border-radius: 0.45em;
   background-color: rgba(255, 255, 255, 0.157);
   display: flex;
@@ -33,6 +33,9 @@
   margin-top: 0.8em;
   margin-left: 0.8em;
   display: inline-block;
+}
+.gallery__item__mask__button:hover {
+  border: 1px solid white;
 }
 .gallery__item__mask__button__img{
   height: 1em;
