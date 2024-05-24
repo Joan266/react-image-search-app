@@ -1,23 +1,42 @@
 .nav{
-  background-color: transparent;
+  background-color: white;
   position: fixed;
   top: 0;
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   height: 5%;
+  padding: 0 0.3em;
+}
+.nav__search-bar-container {
+  border-radius: 2em;
+  background-color: whitesmoke;
+  width: 60%;
+  height: 70%;
+  display: flex;
+  align-items: center;
+  padding: 0.1em 1em; 
 }
 .nav__logo {
   color:black;
+  margin-right: 0.5em;
+  font-weight: 700;
+  cursor: pointer;
+  font-size: 0.8rem;
 }
-.nav__list {
-  margin: 0;
-  padding: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+
+
+.nav__fav-link{
+  border-radius: 2em;
+  padding: 0.25em 0.7em;
+  background-color: transparent;
+  margin-left: 0.5em; 
+  font-size: 0.8rem;
+  color: gray;
 }
-.nav__list__option {
-  margin-right: 4em;
+@media (min-width: 769px) {
+  .nav__fav-link:hover {
+    background-color: rgba(128, 128, 128, 0.062);
+  }
 }
