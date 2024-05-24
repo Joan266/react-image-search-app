@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
 
-export const useSearchDataState = () => {
+export const useSearchState = () => {
   const { status, data, error } = useSelector((state) => state.search);
   useEffect(()=>{
     console.log(data)

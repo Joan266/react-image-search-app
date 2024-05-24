@@ -1,10 +1,11 @@
-import { useSearchDataState } from "../hooks/useSearchDataState";
+import { useSearchState } from "../hooks/useSearchState";
 import downloadIcon from "../public/download.svg";
 import saveIcon from "../public/save.svg";
 import FileSaver from "file-saver";
+import { addFav } from "../slices/favSlice";
 
 export const PhotoGalleryComponent = () => {
-  const { searchData, searchStatus, searchError } = useSearchDataState();
+  const { searchData, searchStatus, searchError } = useSearchState();
 
   const handleDownload = (image) => {
     FileSaver.saveAs(image.urls.raw, "oxygen-photo.jpg");
@@ -23,7 +24,7 @@ export const PhotoGalleryComponent = () => {
               <button className="gallery__item__mask__button" onClick={()=>handleDownload(image)}>                                 
                  <img src={downloadIcon} alt="download icon" className="gallery__item__mask__button__img"></img>
               </button>
-              <button className="gallery__item__mask__button">
+              <button className="gallery__item__mask__button" onClick={()=>addFav(image)}>
                 <img src={saveIcon} alt="save icon" className="gallery__item__mask__button__img"></img>
               </button>
             </div>

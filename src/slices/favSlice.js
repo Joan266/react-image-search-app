@@ -18,6 +18,12 @@ const favSlice = createSlice({
         state.data.push(action.payload);
       }
     },
+    deleteFav(state, action) {
+      const index = state.data.findIndex(fav => fav.id === action.payload.id);
+      if (index > -1) {
+        state.data.splice(index, 1)
+      }
+    },
     updateFav(state, action) {
       const exists = state.data.some(fav => fav.id === action.payload.id);
       if (exists) {
@@ -27,5 +33,5 @@ const favSlice = createSlice({
   }),
 })
 
-export const { setFavs, addFav, updateFav } = favSlice.actions;
+export const { setFavs, addFav, updateFav, deleteFav } = favSlice.actions;
 export const favSliceReducer = favSlice.reducer;
