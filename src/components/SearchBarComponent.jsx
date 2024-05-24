@@ -12,8 +12,9 @@ export const SearchBarComponent = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (inputData === "") return;
-    navigate(`/search/${inputData}`);
+    if (inputData === "" ) return
+    navigate(`/search/${inputData}`)
+    setInputData("")
   };
 
   return (

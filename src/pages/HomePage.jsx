@@ -1,6 +1,8 @@
 import { PhotoGalleryComponent } from "../components/PhotoGalleryComponent"
 import { SearchBarComponent } from "../components/SearchBarComponent"
-export const HomePage = () => {
+
+export const HomePage = () => {  
+
   return (
     <div className="home">
       <section className="home__header">
