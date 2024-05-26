@@ -6,12 +6,12 @@ import { NavComponent } from './NavComponent.jsx';
 import { FooterComponent } from './FooterComponent.jsx';
 
 import { resetSearchStateData, getRandomUnsPhotos } from '../slices/searchSlice'; 
-import { useSearchDataState } from '../hooks/useSearchDataState.jsx';
+import { useSearchState } from '../hooks/useSearchState.jsx';
 
 export const LayoutComponent = () => {  
   const dispatch = useDispatch();
   const location = useLocation();
-  const { searchData, searchStatus, searchError } = useSearchDataState();
+  const { searchData, searchStatus, searchError } = useSearchState();
 
   useEffect(() => {
     if(location.pathname === "/") {

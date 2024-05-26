@@ -3,14 +3,17 @@ import downloadIcon from "../public/download.svg";
 import saveIcon from "../public/save.svg";
 import FileSaver from "file-saver";
 import { addFav } from "../slices/favSlice";
-
+import { useDispatch } from "react-redux";
 export const PhotoGalleryComponent = () => {
   const { searchData, searchStatus, searchError } = useSearchState();
-
+  const dispatch = useDispatch();
   const handleDownload = (image) => {
     FileSaver.saveAs(image.urls.raw, "oxygen-photo.jpg");
   };
 
+  const handleAddFav = (image) => {
+    dispatch(addFav(image));
+  }
   return (
     <section className="gallery">
       {searchStatus === "pending" ? (
@@ -24,7 +27,7 @@ export const PhotoGalleryComponent = () => {
               <button className="gallery__item__mask__button" onClick={()=>handleDownload(image)}>                                 
                  <img src={downloadIcon} alt="download icon" className="gallery__item__mask__button__img"></img>
               </button>
-              <button className="gallery__item__mask__button" onClick={()=>addFav(image)}>
+              <button className="gallery__item__mask__button" onClick={()=>handleAddFav(image)}>
                 <img src={saveIcon} alt="save icon" className="gallery__item__mask__button__img"></img>
               </button>
             </div>
