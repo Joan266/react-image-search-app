@@ -24,14 +24,14 @@ const favSlice = createSlice({
         state.data.splice(index, 1)
       }
     },
-    updateFav(state, action) {
-      const exists = state.data.some(fav => fav.id === action.payload.id);
-      if (exists) {
-        state.data.push(action.payload);
-      }
+    updateFavDescription(state, action) {
+      const index = state.data.findIndex(fav => fav.id === action.payload.id);
+      if (index !== -1) {
+        state.data[index].description = action.payload.description;
+      } 
     }
   }),
 })
 
-export const { setFavs, addFav, updateFav, deleteFav } = favSlice.actions;
+export const { setFavs, addFav, updateFavDescription, deleteFav } = favSlice.actions;
 export const favSliceReducer = favSlice.reducer;
