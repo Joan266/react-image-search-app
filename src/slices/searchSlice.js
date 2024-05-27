@@ -3,7 +3,7 @@ import { createAppSlice } from "./createAppSlice"
 const CLIENT_ID = "5aiFF-NISREFhkAi7lS1gdtnkzGkfg6IAxrpT8lBhFs";
 const createUnsURLSearchPhotosByQuery = (query) =>  `https://api.unsplash.com/search/photos?page=1?per_page=20&query=${query}&client_id=${CLIENT_ID}`
 const unsURLRandomPhotos = `https://api.unsplash.com/photos/random?count=20&client_id=${CLIENT_ID}`
-  
+
 
 const searchSlice = createAppSlice({
   name: 'search',
@@ -71,7 +71,7 @@ const searchSlice = createAppSlice({
     ),
     resetSearchStateData(state) {
       state.data = [];
-    },
+    }
   }),
 })
 

@@ -9,7 +9,7 @@ import './styles/index.css';
 import { HomePage } from './pages/HomePage.jsx';
 import { FavPage } from './pages/FavPage';
 import { SearchPage } from './pages/SearchPage.jsx';
-
+import { PhotoPage } from './pages/PhotoPage.jsx';
 import { LayoutComponent } from './components/LayoutComponent.jsx';
 
 const app = ReactDOM.createRoot(document.getElementById('root'));
@@ -22,6 +22,7 @@ app.render(
             <Route path="/" element={<HomePage />} />
             <Route path="/fav" element={<FavPage/>} />
             <Route path="/search/:query" element={<SearchPage/>} />
+            <Route path="/photo/:id" element={<PhotoPage/>} />
           </Route>
         </Routes>
       </BrowserRouter>
