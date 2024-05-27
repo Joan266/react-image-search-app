@@ -7,7 +7,8 @@ export const FavCollectionComponent = () => {
   const dispatch = useDispatch();
   const { favData } = useFavState();
   const navigate = useNavigate();
-  const handleRemoveFav = (image) => {
+  const handleRemoveFav = (event,image) => {
+    event.stopPropagation();
     dispatch(deleteFav(image));
   }
   const handleGalleryItemClick = (image) => {
@@ -20,7 +21,7 @@ export const FavCollectionComponent = () => {
         favData.map((image) => (
           <figure className="gallery__item" key={image.id} onClick={() => handleGalleryItemClick(image)}>
             <div className="gallery__item__mask gallery__item__mask--top">
-              <button className="gallery__item__mask__button" onClick={()=>handleRemoveFav(image)}>
+              <button className="gallery__item__mask__button" onClick={(event)=>handleRemoveFav(event,image)}>
                 <img src={trashIcon} alt="save icon" className="gallery__item__mask__button__img"></img>
               </button>
             </div>

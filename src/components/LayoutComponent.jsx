@@ -7,11 +7,13 @@ import { FooterComponent } from './FooterComponent.jsx';
 
 import { resetSearchStateData, getRandomUnsPhotos } from '../slices/searchSlice'; 
 import { useSearchState } from '../hooks/useSearchState.jsx';
-
+import { useFavState } from '../hooks/useFavState.jsx';
+import { setFavs } from '../slices/favSlice.js';
 export const LayoutComponent = () => {  
   const dispatch = useDispatch();
   const location = useLocation();
   const { searchData, searchStatus, searchError } = useSearchState();
+  const { favData } = useFavState();
 
   useEffect(() => {
     if(location.pathname === "/") {
@@ -19,6 +21,24 @@ export const LayoutComponent = () => {
       dispatch(getRandomUnsPhotos());
     }
   }, [location]);
+  useEffect(() => {
+    const localStorageFavData = localStorage.getItem('favData');
+    if (localStorageFavData) {
+      dispatch(setFavs(JSON.parse(localStorageFavData)));
+    }
+  }, []);
+  useEffect(() => {
+    const handleWindowClose = () => {
+      if(!favData) return
+      localStorage.setItem('favData', JSON.stringify(favData));
+    };
+
+    window.addEventListener('beforeunload', handleWindowClose);
+
+    return () => {
+      window.removeEventListener('beforeunload', handleWindowClose);
+    };
+  }, [favData]);
   
   return (
     <div className='LayoutComponent'>

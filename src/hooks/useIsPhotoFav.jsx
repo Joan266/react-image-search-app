@@ -21,10 +21,8 @@ export const useIsPhotoFav = (image) => {
   useEffect(() => {
     if (favData && image) {
       const photoDataResult = favData.find(fav => fav.id === image.id);
-      setIsPhotoFav(photoDataResult?true:false);
-      setPhotoDescription(photoDataResult.description !== undefined && photoDataResult.description !== null ? photoDataResult.description : (image?.description ? image.description : image?.alt_description))
-    }
-    console.log(favData)
+      setIsPhotoFav(!!photoDataResult);
+      setPhotoDescription(photoDataResult && photoDataResult.description !== undefined && photoDataResult.description !== null ? photoDataResult.description : (image?.description ? image.description : image?.alt_description))}
   }, [image.id, favData]);
 
   return { isPhotoFav, handleToggleFav, photoDescription }
