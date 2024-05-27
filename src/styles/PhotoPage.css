@@ -1,0 +1,36 @@
+.photo-page {
+}
+
+.photo-details {
+  margin-top: 4em;
+  width: 100%;
+  display: flex; 
+}
+
+.photo-details__img-container {
+  width: 75%;
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+}
+
+.photo-details__img-container img {
+  width: auto;
+  height: auto; 
+  max-height: 50em;
+  max-width: 100%; 
+}
+
+.photo-details__info-container {
+  min-width: 20%;
+  display: flex; 
+  flex-direction: column;
+  border: 1px solid gainsboro;
+  justify-content: center; 
+  box-shadow: 0 3px 6px gainsboro; 
+  height: auto;
+  border-radius: 3em;
+  padding: 1em; 
+  margin-right: 2em;
+  box-sizing: border-box; 
+}
