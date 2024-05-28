@@ -1,6 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-
 const favSlice = createSlice({
   name: 'fav',
   initialState: {
@@ -13,9 +12,14 @@ const favSlice = createSlice({
       state.data = action.payload;
     },
     addFav(state, action) {
-      const exists = state.data.some(fav => fav.id === action.payload.id);
+      const { id, description, alt_description } = action.payload;
+      const exists = state.data.some(fav => fav.id === id);
+      
       if (!exists) {
-        state.data.push(action.payload);
+        const importDate = new Date().toLocaleDateString('en-GB');
+        const descriptionToUse = description || alt_description;
+        const newFav = { ...action.payload, importDate, description: descriptionToUse };
+        state.data.push(newFav);
       }
     },
     deleteFav(state, action) {

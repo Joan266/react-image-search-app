@@ -22,7 +22,7 @@ export const useIsPhotoFav = (image) => {
     if (favData && image) {
       const photoDataResult = favData.find(fav => fav.id === image.id);
       setIsPhotoFav(!!photoDataResult);
-      setPhotoDescription(photoDataResult && photoDataResult.description !== undefined && photoDataResult.description !== null ? photoDataResult.description : (image?.description ? image.description : image?.alt_description))}
+      setPhotoDescription(photoDataResult && photoDataResult.description !== undefined && photoDataResult.description !== null ? photoDataResult.description : (image?.description || image?.alt_description))}
   }, [image.id, favData]);
 
   return { isPhotoFav, handleToggleFav, photoDescription }
