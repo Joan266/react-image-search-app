@@ -15,7 +15,7 @@ const favSlice = createSlice({
     addFav(state, action) {
       const exists = state.data.some(fav => fav.id === action.payload.id);
       if (!exists) {
-        state.data.push(action.payload);
+          state.data.push({ ...action.payload, importDate: Date.now() });
       }
     },
     deleteFav(state, action) {

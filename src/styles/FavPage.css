@@ -1,0 +1,40 @@
+.fav-page {
+  height: 100%;
+  width: 100%;
+}
+.fav-page__header {
+  border-top: 1px solid gainsboro;
+  border-bottom: 1px solid gainsboro;
+  width: 100%;
+  height: 3.5em;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: row;
+  margin: 3.5em 0;
+}
+
+.fav-page__header__title {
+  font-weight: 600;
+  font-size: 1.35rem;
+  color:black;
+  margin-left: 1em;
+}
+
+.fav-page__header__search-bar-container {
+  border-radius: 2em;
+  background-color: whitesmoke;
+  display: flex;
+  align-items: center;
+  padding: 0.2em 1em; 
+  width: 40%;
+}
+
+.fav-page__header__select-filter-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 10px;
+  margin-right: 1em;
+}
