@@ -38,6 +38,12 @@ export const FavCollectionComponent = () => {
     setFavDataMutation(sortedFavData);
   };
   
+  const truncateText = (text, maxLength) => {
+    if (text && text.length > maxLength) {
+      return text.slice(0, maxLength) + '...';
+    }
+    return text;
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -101,8 +107,13 @@ export const FavCollectionComponent = () => {
                     className="gallery__item__mask__button__img"
                   ></img>
                 </button>
+              
               </div>
-              <div className="gallery__item__mask gallery__item__mask--bottom"></div>
+              <div className="gallery__item__mask gallery__item__mask--bottom">
+              </div>
+              <div className="gallery__item__mask gallery__item__mask--description">
+                {truncateText(image.description, 50)}
+              </div>
               <img
                 className="gallery__img"
                 src={image.urls.small}

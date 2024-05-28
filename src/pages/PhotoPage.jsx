@@ -1,4 +1,4 @@
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import FileSaver from "file-saver";
 
@@ -6,6 +6,7 @@ import downloadIcon from "../public/download-black.svg";
 import saveIconGreen from "../public/save-green.svg";
 import saveIconBlack from "../public/save-black.svg";
 import editIcon from "../public/edit.svg";
+import backArrowIcon from "../public/back-arrow.svg";
 import { useIsPhotoFav } from "../hooks/useIsPhotoFav";
 import { EditDescriptionPopupComponent } from "../components/EditDescriptionPopupComponent"; 
 
@@ -14,6 +15,12 @@ export const PhotoPage = () => {
   const { image } = location.state || {}; 
   const { isPhotoFav, handleToggleFav, photoDescription } = useIsPhotoFav(image);
   const [isEditDescription, setIsEditDescription] = useState(false);
+  const navigate = useNavigate();
+
+  const goBackToLastRoute = (event) => {
+    event.stopPropagation(); 
+    navigate(-1)
+  };
 
   const handleDownload = (event, image_urls_raw) => {
     event.stopPropagation();
@@ -22,6 +29,18 @@ export const PhotoPage = () => {
 
   return (
     <div className="photo-page">
+      <section className="photo-page__header">
+        <button
+          className="photo-page__header__back-arrow-button"
+          onClick={goBackToLastRoute}
+        >
+          <img
+            src={backArrowIcon}
+            alt="back arrow icon"
+            className="photo-page__header__back-arrow-button__img"
+          ></img>
+        </button>
+      </section>
       {image ? (
         <>
           {isEditDescription && (

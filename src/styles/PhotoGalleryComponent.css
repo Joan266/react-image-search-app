@@ -60,3 +60,12 @@
   height: 100%;
   object-fit: cover;
 }
+.gallery__item__mask--description {
+  bottom: 1em;
+  left: 2.5%;
+  height: 3em;
+  width: 95%;
+  font-size: 0.75rem;
+  color:white;
+  text-align: center;
+}

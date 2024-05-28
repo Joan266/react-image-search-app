@@ -1,12 +1,38 @@
 .photo-page {
-}
-
-.details {
   margin-top: 3.5em;
+}
+.photo-page__header {
+  height: 3em;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  border-top: 1px solid gainsboro;
+  border-bottom: 1px solid gainsboro;
+}
+.photo-page__header__back-arrow-button {
+  border-radius: 50%;
+  border: none;
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  height: 2.5em;
+  width: 2.5em;
+  margin-left: 0.8em;
+}
+.photo-page__header__back-arrow-button__img {
+  height: 1.5em;
+  width: 1.5em;
+}
+.photo-page__header__back-arrow-button:hover {
+  scale: 1.05;
+}
+.details {
   width: 100%;
   display: flex; 
-  border-top: 1px solid gainsboro;
-  padding-top: 2em;
+  padding-top: 1em;
 }
 
 .details__container {
