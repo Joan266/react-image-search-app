@@ -4,7 +4,9 @@ import { useFavState } from "../hooks/useFavState";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import FileSaver from "file-saver";
 import searchIcon from "../public/search.svg";
+import downloadIcon from "../public/download.svg";
 
 export const FavCollectionComponent = () => {
   const dispatch = useDispatch();
@@ -44,7 +46,10 @@ export const FavCollectionComponent = () => {
     }
     return text;
   };
-
+  const handleDownload = (event, image_urls_raw) => {
+    event.stopPropagation();
+    FileSaver.saveAs(image_urls_raw, "oxygen-photo.jpg");
+  };
   const handleSubmit = (event) => {
     event.preventDefault();
     const filteredFavData = favData.filter((favImage) => {
@@ -71,7 +76,7 @@ export const FavCollectionComponent = () => {
             ></img>
             <form onSubmit={handleSubmit} className="search-bar__form">
               <input
-                placeholder="Buscar imagenes dentro de colección"
+                placeholder="Buscar imagenes por descripción"
                 onChange={handleChange}
                 value={inputData}
                 className="search-bar__form__input"
@@ -107,13 +112,34 @@ export const FavCollectionComponent = () => {
                     className="gallery__item__mask__button__img"
                   ></img>
                 </button>
-              
+                <button
+                  className="gallery__item__mask__button"
+                  onClick={(event) => handleDownload(event, image.urls.raw)}
+                >
+                  <img src={downloadIcon} alt="download icon" className="gallery__item__mask__button__img" />
+                </button>
               </div>
               <div className="gallery__item__mask gallery__item__mask--bottom">
               </div>
-              <div className="gallery__item__mask gallery__item__mask--description">
-                {truncateText(image.description, 50)}
-              </div>
+              <section className="gallery__item__mask gallery__item__mask--data">
+                <div className="gallery__item__description">
+                  {truncateText(image?.description, 50)}
+                </div>
+                <div className="gallery__item__pills-list">
+                  <article className="gallery__item__pill">
+                    Width{image.width}
+                  </article>
+                  <article className="gallery__item__pill">
+                    Height{image.height}
+                  </article>
+                  <article className="gallery__item__pill">
+                    Likes{image.likes}
+                  </article>
+                  <article className="gallery__item__pill">
+                    {image.importDate}
+                  </article>
+                </div>
+              </section>
               <img
                 className="gallery__img"
                 src={image.urls.small}

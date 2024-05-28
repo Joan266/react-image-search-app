@@ -16,7 +16,7 @@ const favSlice = createSlice({
       const exists = state.data.some(fav => fav.id === id);
       
       if (!exists) {
-        const importDate = Date.now();
+        const importDate = new Date().toLocaleDateString('en-GB');
         const descriptionToUse = description || alt_description;
         const newFav = { ...action.payload, importDate, description: descriptionToUse };
         state.data.push(newFav);

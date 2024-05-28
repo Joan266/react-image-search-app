@@ -36,8 +36,20 @@ const searchSlice = createAppSlice({
           alert(`Error API photos - ${action.payload ?? action.error}`);
         },
         fulfilled: (state, action) => {
+          const { results } = action.payload;
           state.status = "fulfilled";
-          state.data = action.payload.results;
+          state.data = results.map(result => ({
+            id: result.id,
+            urls: result.urls,
+            links: result.links,
+            description: result.description,
+            description_url: result.description_url,
+            width: result.width,
+            height: result.height,
+            likes: result.likes,
+            views: result.views,
+            downloads: result.downloads
+          }));
         },
       }
     ),

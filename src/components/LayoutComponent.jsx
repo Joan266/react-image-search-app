@@ -26,6 +26,7 @@ export const LayoutComponent = () => {
     if (localStorageFavData) {
       dispatch(setFavs(JSON.parse(localStorageFavData)));
     }
+    console.log("localStorage FavData")
   }, []);
   useEffect(() => {
     const handleWindowClose = () => {
