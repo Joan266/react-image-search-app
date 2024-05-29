@@ -123,7 +123,7 @@ export const FavCollectionComponent = () => {
               </div>
               <section className="gallery__item__mask gallery__item__mask--data">
                 <div className="gallery__item__description">
-                  {truncateText(image?.description, 50)}
+                  {truncateText(image?.description, 40)}
                 </div>
                 <div className="gallery__item__pills-list">
                   <article className="gallery__item__pill">

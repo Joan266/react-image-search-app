@@ -1,18 +1,25 @@
 .search {
   height: 100%;
   width: 100%;
-  margin-top: 5%;
+  margin-top: 3.5em;
 }
 .search__header {
-  height: 100px;
+  height: 5em;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: left;
+  border-bottom: 1px solid gainsboro;
+  border-top: 1px solid gainsboro;
+  margin-bottom: 1.5em;
 }
 
 .search__header__title {
   font-weight: 700;
   font-size: 1.65rem;
   margin-left: 2em;
+}
+
+.search__chips-container {
+  margin-bottom: 0.5em;
 }

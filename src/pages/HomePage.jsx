@@ -1,8 +1,19 @@
 import { PhotoGalleryComponent } from "../components/PhotoGalleryComponent"
 import { SearchBarComponent } from "../components/SearchBarComponent"
+import { ChipsComponent } from "../components/ChipsComponent"
 
 export const HomePage = () => {  
-
+  const searchWords = [
+    "naturaleza", "paisaje", "ciudad", "viaje", "playa", "montaña", 
+    "arquitectura", "urbano", "arte", "colorido", "abstracto", 
+    "moderno", "antiguo", "fotografía", "textura", "animales", 
+    "aventura", "cultura", "comida", "tecnología", "negocios", 
+    "creativo", "inspiración", "construcción", "patrón", "minimalista", 
+    "cielo", "agua", "reflejo", "luces", "sombras", "movimiento", 
+    "tranquilidad", "energía", "pasión", "alegría", "emoción", 
+    "misterio", "diseño", "celebración", "relajación", "innovación", 
+    "equilibrio", "contraste"
+  ];
   return (
     <div className="home">
       <section className="home__header">
@@ -13,6 +24,9 @@ export const HomePage = () => {
           <SearchBarComponent/>
           </div>
         </div>
+      </section>
+      <section className="home__chips-container">
+        <ChipsComponent searchWords={searchWords}/>
       </section>
       <PhotoGalleryComponent/>
     </div>
