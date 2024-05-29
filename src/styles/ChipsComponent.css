@@ -1,0 +1,25 @@
+.chips {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5em;
+  overflow: hidden;
+  height: 4em;
+  align-items: center;
+  margin: 0 2em;
+}
+.chips__item {
+  border: 1px solid gainsboro;
+  border-radius: 0.6em;
+  background-color: rgba(255, 255, 255, 0.157);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  height: fit-content;
+  font-size: 0.9rem;
+  color: rgba(0, 0, 0, 0.862);
+  padding: 0.5em;
+}
+.chips__item:hover {
+  border: 1px solid rgba(0, 0, 0, 0.862);
+}

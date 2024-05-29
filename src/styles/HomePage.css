@@ -10,7 +10,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 5em;
+  margin-bottom: 1.5em;
 }
 .home__header__content {
   width: 40em;
@@ -31,4 +31,7 @@
   align-items: center;
   padding: 0.2em 1em; 
   margin-top: 0.8em;
+}
+.home__chips-container {
+  margin-bottom: 0.5em;
 }
