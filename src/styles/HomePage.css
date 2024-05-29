@@ -3,34 +3,36 @@
   width: 100%;
 }
 .home__header {
-  height: 450px;
+  height: 27em;
   width: 100%;
   color: white;
-  background-color: black;
+  background: url('../public/background-photo1.webp') no-repeat center center;
+  background-size: cover;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 1.5em;
 }
 .home__header__content {
-  width: 40em;
+  width: 52em;
+  margin-bottom: 1.9em;
 }
 .home__header__content__title {
   font-weight: 700;
-  font-size: 1.65rem;
+  font-size: 1.95rem;
 }
 .home__header__content__subtitle {
   font-weight: 400;
-  font-size: 0.65rem;
-  margin-top: 0.8em;
+  font-size: 0.85rem;
+  margin-top: 1em;
 }
 .home__header__content__search-bar-container {
   border-radius: 2em;
   background-color: white;
   display: flex;
   align-items: center;
-  padding: 0.2em 1em; 
-  margin-top: 0.8em;
+  padding: 0.7em 1.4em; 
+  margin-top: 1.5em;
 }
 .home__chips-container {
   margin-bottom: 0.5em;
