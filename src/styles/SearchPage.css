@@ -9,17 +9,27 @@
   display: flex;
   align-items: center;
   justify-content: left;
-  border-bottom: 1px solid gainsboro;
-  border-top: 1px solid gainsboro;
-  margin-bottom: 1.5em;
+  margin-bottom: 1em;
 }
 
 .search__header__title {
-  font-weight: 700;
-  font-size: 1.65rem;
-  margin-left: 2em;
+  font-weight: 600;
+  font-size: 1.15rem;
+  margin-left: 1em;
 }
 
 .search__chips-container {
   margin-bottom: 0.5em;
+}
+
+@media (min-width: 1200px) { 
+
+  .search__header {
+    height: 7em;
+    margin-bottom: 1.5em;
+  }
+  .search__header__title {
+    font-size: 1.25rem;
+    margin-left: 2em;
+  }
 }

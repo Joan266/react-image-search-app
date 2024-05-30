@@ -9,6 +9,7 @@ import editIcon from "../public/edit.svg";
 import backArrowIcon from "../public/back-arrow.svg";
 import { useIsPhotoFav } from "../hooks/useIsPhotoFav";
 import { EditDescriptionPopupComponent } from "../components/EditDescriptionPopupComponent"; 
+import { useWindowWidthContext } from '../hooks/useWindowWidthContext'
 
 export const PhotoPage = () => {
   const location = useLocation();
@@ -16,6 +17,7 @@ export const PhotoPage = () => {
   const { isPhotoFav, handleToggleFav, photoDescription } = useIsPhotoFav(image);
   const [isEditDescription, setIsEditDescription] = useState(false);
   const navigate = useNavigate();
+  const windowWidth = useWindowWidthContext();
 
   const goBackToLastRoute = (event) => {
     event.stopPropagation(); 
@@ -72,7 +74,7 @@ export const PhotoPage = () => {
                     onClick={() => setIsEditDescription(true)}
                   >
                     <img src={editIcon} alt="edit icon" className="details__info__actions__button__img" />
-                    Editar
+                    {windowWidth >= 1200 ? 'Editar' : ''} 
                   </button>
                 )}
                 <button
@@ -80,14 +82,14 @@ export const PhotoPage = () => {
                   onClick={(event) => handleToggleFav(event, image)}
                 >
                   <img src={isPhotoFav ? saveIconGreen : saveIconBlack} alt="save icon" className="details__info__actions__button__img" />
-                  Guardar
+                  {windowWidth >= 1200 ? 'Guardar' : ''}
                 </button>
                 <button
                   className="details__info__actions__button"
                   onClick={(event) => handleDownload(event, image.urls.raw)}
                 >
                   <img src={downloadIcon} alt="download icon" className="details__info__actions__button__img" />
-                  Descargar
+                  {windowWidth >= 1200 ? 'Descargar' : ''}
                 </button>
               </section>
             </article>

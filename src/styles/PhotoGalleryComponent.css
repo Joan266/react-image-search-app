@@ -2,7 +2,7 @@
   column-count: auto;
   column-gap: 0.5em;
   column-width: 350px;
-  margin: 0em 2em;
+  margin: 0em 1em;
 }
 
 .gallery__item {
@@ -44,16 +44,16 @@
 .gallery__item__mask--top {
   top: 0;
   left: 0;
-  height: 4.5em;
+  height: 4em;
   width: 100%;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.65), transparent);
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), transparent);
 }
 .gallery__item__mask--bottom {
   bottom: 0.45em;
   left: 0;
-  height: 4em;
+  height: 3.5em;
   width: 100%;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.65), transparent);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.4), transparent);
 }
 .gallery__img {
   width: 100%;
@@ -61,29 +61,41 @@
   object-fit: cover;
 }
 .gallery__item__mask--data {
-  bottom: 1em;
-  left: 2.5%;
-  height: 3em;
-  width: 95%;
+  bottom: 0.5em;
+  left: 0;
+  height: 4.5em;
+  width: 100%;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
 }
 .gallery__item__description {
-  font-size: 0.7rem;
+  font-size: 0.75rem;
   color:white;
   text-align: center;
-  margin-bottom: 1em;
+  margin: 0 0.5em;
+  margin-bottom: 0.85em;
+  margin-top: 0.85em;
 }
 .gallery__item__pills-list {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  gap: 3px;
-  margin-top: 0.25em;
+  gap: 6px;
+  margin-bottom: 0.7em;
 }
 .gallery__item__pill {
-  background-color: ghostwhite;
-  color: gray;
-  border: 3px solid gainsboro;
+  background-color: rgba(0, 0, 0, 0.3);
+  color: white;
   font-size: 0.6rem;
-  border-radius: 2em;
-  padding: 0.1em 0.5em;
+  border-radius: 0.5em;
+  padding: 0.25em 0.6em;
+  font-weight: 600;
+}
+
+@media (min-width: 1200px) {
+  .gallery {
+    column-count: auto;
+    column-gap: 0.5em;
+    column-width: 350px;
+    margin: 0em 2em;
+  }
 }
