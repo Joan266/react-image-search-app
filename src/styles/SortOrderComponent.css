@@ -1,10 +1,10 @@
 .sort-order {
   padding: 0.5em;
-  font-size: 1rem;
+  font-size: 0.85rem;
   border: 0.0625em solid #ccc;
-  border-radius: 0.25em;
+  border-radius: 0.45em;
   background-color: #fff;
-  color: #333;
+  color: gray;
   cursor: pointer;
   outline: none;
   transition: border-color 0.3s;
@@ -20,7 +20,7 @@
 
 .sort-order__item {
   padding: 0.5em;
-  font-size: 1rem;
+  font-size: 0.85rem;
   color: #333;
 }
 
@@ -30,5 +30,5 @@
 }
 
 .sort-order {
-  width: 12.5em; 
+  width: 8em; 
 }

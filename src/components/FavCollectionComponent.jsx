@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import FileSaver from "file-saver";
-import searchIcon from "../public/search.svg";
+import searchIcon from "../public/search-grey.svg";
 import downloadIcon from "../public/download.svg";
 import eyeSlashIcon from "../public/eye-slash-grey.svg";
 
@@ -82,7 +82,7 @@ export const FavCollectionComponent = () => {
               ></img>
               <form onSubmit={handleSubmit} className="search-bar__form">
                 <input
-                  placeholder="Buscar imagenes por descripción"
+                  placeholder="Busqueda"
                   onChange={handleChange}
                   value={inputData}
                   className="search-bar__form__input"

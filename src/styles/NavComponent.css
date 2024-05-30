@@ -52,6 +52,7 @@
 
 .nav--regular .nav__search-bar-container {
   height: 55%;
+  font-size: x-small;
 }
 
 .nav--regular .nav__logo {
