@@ -28,7 +28,7 @@ export const NavComponent = () => {
   return (
     <nav className={`nav ${(isScrolled && isHomePage) ? 'nav--regular' : 'nav--top-home'}`}>
       <article className="nav__logo">
-        <Link to="/">{windowWidth >= 769 ? 'OxygenPhotos' : 'OP'}</Link>
+        <Link to="/">{windowWidth >= 1200 ? 'OxygenPhotos' : 'OP'}</Link>
       </article>
       <div className="nav__search-bar-container">
         <SearchBarComponent />

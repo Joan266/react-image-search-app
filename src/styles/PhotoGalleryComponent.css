@@ -2,7 +2,7 @@
   column-count: auto;
   column-gap: 0.5em;
   column-width: 350px;
-  margin: 0em 2em;
+  margin: 0em 1em;
 }
 
 .gallery__item {
@@ -86,4 +86,13 @@
   font-size: 0.6rem;
   border-radius: 2em;
   padding: 0.1em 0.5em;
+}
+
+@media (min-width: 1200px) {
+  .gallery {
+    column-count: auto;
+    column-gap: 0.5em;
+    column-width: 350px;
+    margin: 0em 2em;
+  }
 }
