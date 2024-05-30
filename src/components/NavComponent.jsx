@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { SearchBarComponent } from './SearchBarComponent';
+import { useWindowWidthContext } from '../hooks/useWindowWidthContext';
 
 export const NavComponent = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
+  const windowWidth = useWindowWidthContext();
   const isHomePage = location.pathname === '/';
 
   useEffect(() => {
@@ -26,7 +28,7 @@ export const NavComponent = () => {
   return (
     <nav className={`nav ${(isScrolled && isHomePage) ? 'nav--regular' : 'nav--top-home'}`}>
       <article className="nav__logo">
-        <Link to="/">OxygenPhotos</Link>
+        <Link to="/">{windowWidth >= 769 ? 'OxygenPhotos' : 'OP'}</Link>
       </article>
       <div className="nav__search-bar-container">
         <SearchBarComponent />
