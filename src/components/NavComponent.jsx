@@ -26,7 +26,7 @@ export const NavComponent = () => {
   }, []);
 
   return (
-    <nav className={`nav ${(isScrolled && isHomePage) ? 'nav--regular' : 'nav--top-home'}`}>
+    <nav className={`nav ${(isScrolled && isHomePage) ? 'nav--regular' : (!isScrolled && isHomePage) ? 'nav--top-home' :'nav--regular'}`}>
       <article className="nav__logo">
         <Link to="/">{windowWidth >= 1200 ? 'OxygenPhotos' : 'OP'}</Link>
       </article>

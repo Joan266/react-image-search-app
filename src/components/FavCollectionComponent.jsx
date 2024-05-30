@@ -7,6 +7,7 @@ import { useState } from "react";
 import FileSaver from "file-saver";
 import searchIcon from "../public/search.svg";
 import downloadIcon from "../public/download.svg";
+import eyeSlashIcon from "../public/eye-slash-grey.svg";
 
 export const FavCollectionComponent = () => {
   const dispatch = useDispatch();
@@ -66,31 +67,37 @@ export const FavCollectionComponent = () => {
       <section className="fav-page__header">
         <div className="fav-page__header__title">
           Imagenes favoritas
+          <span className="fav-page__header__fav-num">
+            <img className="fav-page__header__fav-num__img"  src={eyeSlashIcon} alt="eye slash icon" />
+            {`${renderFavData.length} elementos`}
+          </span>
         </div>
-        <div className="fav-page__header__search-bar-container">
-          <article className="search-bar">
-            <img
-              src={searchIcon}
-              className="search-bar__icon"
-              alt="search icon"
-            ></img>
-            <form onSubmit={handleSubmit} className="search-bar__form">
-              <input
-                placeholder="Buscar imagenes por descripción"
-                onChange={handleChange}
-                value={inputData}
-                className="search-bar__form__input"
-              />
-            </form>
-          </article>
-        </div>
-        <div className="fav-page__header__select-filter-container">
-          <select className="sort-order" onChange={handleSortItemChange}>
-            <option className="sort-order__item" value="importDate">Import Date</option>
-            <option className="sort-order__item" value="width">Width</option>
-            <option className="sort-order__item" value="height">Height</option>
-            <option className="sort-order__item" value="likes">Likes</option>
-          </select>
+        <div className="fav-page__header__controls">
+          <div className="fav-page__header__search-bar-container">
+            <article className="search-bar">
+              <img
+                src={searchIcon}
+                className="search-bar__icon"
+                alt="search icon"
+              ></img>
+              <form onSubmit={handleSubmit} className="search-bar__form">
+                <input
+                  placeholder="Buscar imagenes por descripción"
+                  onChange={handleChange}
+                  value={inputData}
+                  className="search-bar__form__input"
+                />
+              </form>
+            </article>
+          </div>
+          <div className="fav-page__header__select-filter-container">
+            <select className="sort-order" onChange={handleSortItemChange}>
+              <option className="sort-order__item" value="importDate">Import Date</option>
+              <option className="sort-order__item" value="width">Width</option>
+              <option className="sort-order__item" value="height">Height</option>
+              <option className="sort-order__item" value="likes">Likes</option>
+            </select>
+          </div>
         </div>
       </section>
       <section className="gallery">
@@ -127,13 +134,13 @@ export const FavCollectionComponent = () => {
                 </div>
                 <div className="gallery__item__pills-list">
                   <article className="gallery__item__pill">
-                    Width{image.width}
+                    {`Width ${image.width}`} 
                   </article>
                   <article className="gallery__item__pill">
-                    Height{image.height}
+                    {`Height ${image.height}`} 
                   </article>
                   <article className="gallery__item__pill">
-                    Likes{image.likes}
+                    {`Likes ${image.likes}`}
                   </article>
                   <article className="gallery__item__pill">
                     {image.importDate}
