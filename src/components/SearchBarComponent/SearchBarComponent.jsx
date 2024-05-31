@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from 'react-router-dom';
-import searchIcon from "../public/search-grey.svg";
-
+import searchIcon from "../../public/search-grey.svg";
+import "./SearchBarComponent.css";
 export const SearchBarComponent = () => {
   const navigate = useNavigate();
   const [inputData, setInputData] = useState("");

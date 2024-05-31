@@ -2,13 +2,12 @@ import { useEffect } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
 import { useDispatch } from "react-redux";
 
-import { NavComponent } from './NavComponent.jsx';
-import { FooterComponent } from './FooterComponent.jsx';
+import { NavComponent } from '../NavComponent/NavComponent.jsx';
 
-import { resetSearchStateData, getRandomUnsPhotos } from '../slices/searchSlice'; 
-import { useSearchState } from '../hooks/useSearchState.jsx';
-import { useFavState } from '../hooks/useFavState.jsx';
-import { setFavs } from '../slices/favSlice.js';
+import { resetSearchStateData, getRandomUnsPhotos } from '../../slices/searchSlice'; 
+import { useSearchState } from '../../hooks/useSearchState.jsx';
+import { useFavState } from '../../hooks/useFavState.jsx';
+import { setFavs } from '../../slices/favSlice.js';
 export const LayoutComponent = () => {  
   const dispatch = useDispatch();
   const location = useLocation();
@@ -47,7 +46,6 @@ export const LayoutComponent = () => {
       <div id='main' className='main'>
         <Outlet/>
       </div>
-      <FooterComponent/>
     </div>
   );
 };

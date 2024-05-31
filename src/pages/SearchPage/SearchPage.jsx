@@ -1,10 +1,10 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
-import { searchUnsPhotosByQuery } from "../slices/searchSlice";
-import { PhotoGalleryComponent } from "../components/PhotoGalleryComponent";
-import { ChipsComponent } from "../components/ChipsComponent";
-
+import { searchUnsPhotosByQuery } from "../../slices/searchSlice";
+import { PhotoGalleryComponent } from "../../components/PhotoGalleryComponent/PhotoGalleryComponent.jsx";
+import { ChipsComponent } from "../../components/ChipsComponent/ChipsComponent.jsx";
+import "./SearchPage.css"
 export const SearchPage = () => {
   const dispatch = useDispatch();
   const { query } = useParams();

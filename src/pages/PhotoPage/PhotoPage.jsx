@@ -2,22 +2,20 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import FileSaver from "file-saver";
 
-import downloadIcon from "../public/download-black.svg";
-import saveIconGreen from "../public/save-green.svg";
-import saveIconBlack from "../public/save-black.svg";
-import editIcon from "../public/edit.svg";
-import backArrowIcon from "../public/back-arrow.svg";
-import { useIsPhotoFav } from "../hooks/useIsPhotoFav";
-import { EditDescriptionPopupComponent } from "../components/EditDescriptionPopupComponent"; 
-import { useWindowWidthContext } from '../hooks/useWindowWidthContext'
-
+import downloadIcon from "../../public/download-black.svg";
+import saveIconGreen from "../../public/save-green.svg";
+import saveIconBlack from "../../public/save-black.svg";
+import editIcon from "../../public/edit.svg";
+import backArrowIcon from "../../public/back-arrow.svg";
+import { useIsPhotoFav } from "../../hooks/useIsPhotoFav";
+import { EditDescriptionPopupComponent } from "../../components/EditDescriptionPopupComponent/EditDescriptionPopupComponent.jsx"; 
+import "./PhotoPage.css"
 export const PhotoPage = () => {
   const location = useLocation();
   const { image } = location.state || {}; 
   const { isPhotoFav, handleToggleFav, photoDescription } = useIsPhotoFav(image);
   const [isEditDescription, setIsEditDescription] = useState(false);
   const navigate = useNavigate();
-  const windowWidth = useWindowWidthContext();
 
   const goBackToLastRoute = (event) => {
     event.stopPropagation(); 
@@ -74,7 +72,7 @@ export const PhotoPage = () => {
                     onClick={() => setIsEditDescription(true)}
                   >
                     <img src={editIcon} alt="edit icon" className="details__info__actions__button__img" />
-                    {windowWidth >= 1200 ? 'Editar' : ''} 
+                    <span>Editar</span>  
                   </button>
                 )}
                 <button
@@ -82,14 +80,14 @@ export const PhotoPage = () => {
                   onClick={(event) => handleToggleFav(event, image)}
                 >
                   <img src={isPhotoFav ? saveIconGreen : saveIconBlack} alt="save icon" className="details__info__actions__button__img" />
-                  {windowWidth >= 1200 ? 'Guardar' : ''}
+                  <span>Guardar</span>
                 </button>
                 <button
                   className="details__info__actions__button"
                   onClick={(event) => handleDownload(event, image.urls.raw)}
                 >
                   <img src={downloadIcon} alt="download icon" className="details__info__actions__button__img" />
-                  {windowWidth >= 1200 ? 'Descargar' : ''}
+                  <span>Descargar</span>
                 </button>
               </section>
             </article>

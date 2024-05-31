@@ -1,10 +1,9 @@
-import downloadIcon from "../public/download.svg";
-import saveIcon from "../public/save.svg";
-import saveIconGreen from "../public/save-green.svg";
+import downloadIcon from "../../public/download.svg";
+import saveIcon from "../../public/save.svg";
+import saveIconGreen from "../../public/save-green.svg";
 import FileSaver from "file-saver";
 import { useNavigate } from "react-router-dom";
-import { useIsPhotoFav } from "../hooks/useIsPhotoFav";
-
+import { useIsPhotoFav } from "../../hooks/useIsPhotoFav";
 export const GalleryCardComponent = ({image}) => {
   const navigate = useNavigate();
   const { isPhotoFav, handleToggleFav } = useIsPhotoFav(image);

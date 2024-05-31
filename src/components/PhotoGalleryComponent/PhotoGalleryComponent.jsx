@@ -1,5 +1,6 @@
-import { useSearchState } from "../hooks/useSearchState";
-import { GalleryCardComponent } from "./GalleryCardComponent";
+import { useSearchState } from "../../hooks/useSearchState";
+import { GalleryCardComponent } from "../GalleryCardComponent/GalleryCardComponent.jsx";
+import "./PhotoGalleryComponent.css"
 export const PhotoGalleryComponent = () => {
   const { searchData, searchStatus, searchError } = useSearchState();
 

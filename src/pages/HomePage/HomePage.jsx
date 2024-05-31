@@ -1,7 +1,7 @@
-import { PhotoGalleryComponent } from "../components/PhotoGalleryComponent"
-import { SearchBarComponent } from "../components/SearchBarComponent"
-import { ChipsComponent } from "../components/ChipsComponent"
-
+import { PhotoGalleryComponent } from "../../components/PhotoGalleryComponent/PhotoGalleryComponent.jsx"
+import { SearchBarComponent } from "../../components/SearchBarComponent/SearchBarComponent.jsx"
+import { ChipsComponent } from "../../components/ChipsComponent/ChipsComponent.jsx"
+import "./HomePage.css"
 export const HomePage = () => {  
   const searchWords = [
     "naturaleza", "paisaje", "ciudad", "viaje", "playa", "montaña", 

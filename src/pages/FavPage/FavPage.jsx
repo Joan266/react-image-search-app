@@ -1,15 +1,15 @@
-import trashIcon from "../public/trash.svg";
-import { deleteFav } from "../slices/favSlice";
-import { useFavState } from "../hooks/useFavState";
+import { deleteFav } from "../../slices/favSlice";
+import { useFavState } from "../../hooks/useFavState";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import FileSaver from "file-saver";
-import searchIcon from "../public/search-grey.svg";
-import downloadIcon from "../public/download.svg";
-import eyeSlashIcon from "../public/eye-slash-grey.svg";
-
-export const FavCollectionComponent = () => {
+import trashIcon from "../../public/trash.svg";
+import searchIcon from "../../public/search-grey.svg";
+import downloadIcon from "../../public/download.svg";
+import eyeSlashIcon from "../../public/eye-slash-grey.svg";
+import "./FavPage.css";
+export const FavPage = () => {  
   const dispatch = useDispatch();
   const { favData } = useFavState();
   const navigate = useNavigate();
@@ -156,5 +156,5 @@ export const FavCollectionComponent = () => {
           ))}
       </section>
     </div>
-  );
-};
+  )
+}
