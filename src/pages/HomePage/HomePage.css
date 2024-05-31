@@ -1,13 +1,14 @@
 .home {
   height: 100%;
   width: 100%;
+  margin-bottom: 1em;
 }
 
 .home__header {
   height: 23em;
   width: 100%;
   color: white;
-  background: url('../public/background-photo1.webp') no-repeat center center;
+  background: url('../../public/background-photo1.webp') no-repeat center center;
   background-size: cover;
   display: flex;
   align-items: center;

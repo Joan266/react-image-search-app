@@ -26,14 +26,14 @@ export const NavComponent = () => {
   return (
     <nav className={`nav ${(isScrolled && isHomePage) ? 'nav--regular' : (!isScrolled && isHomePage) ? 'nav--top-home' :'nav--regular'}`}>
       <article className="nav__logo">
-        <Link to="/"><span className="nav__logo nav__logo-long">OxygenPhotos</span><span className="nav__logo nav__logo--sort">OP</span></Link>
+        <Link to="/"><span className="nav__logo__text nav__logo__text--long">OxygenPhotos</span><span className="nav__logo__text nav__logo__text--sort">OP</span></Link>
       </article>
       <div className="nav__search-bar-container">
         <SearchBarComponent />
       </div>
-      <div className="nav__fav-link">
-        <Link to="/fav">Favoritos</Link>
-      </div>
+      <Link to="/fav">
+        <div className="nav__fav-link">Favoritos </div>
+      </Link>
     </nav>
   );
 };

@@ -1,5 +1,6 @@
 .photo-page {
   margin-top: 3.5em;
+  margin-bottom: 1em;
 }
 .photo-page__header {
   height: 2.5em;
@@ -117,7 +118,9 @@
   font-size: 0.75rem;
   color: rgb(34, 34, 34);
 }
-
+.details__info__actions__button__text {
+  display: none;
+}
 
 @media (min-width: 1200px) { 
   .photo-page {
@@ -213,5 +216,7 @@
   .details__info__data__item span{
     font-size: 1rem;
   }
-  
+  .details__info__actions__button__text {
+    display: block;
+  }
 }

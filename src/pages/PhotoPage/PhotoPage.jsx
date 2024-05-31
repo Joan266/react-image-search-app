@@ -72,7 +72,7 @@ export const PhotoPage = () => {
                     onClick={() => setIsEditDescription(true)}
                   >
                     <img src={editIcon} alt="edit icon" className="details__info__actions__button__img" />
-                    <span>Editar</span>  
+                    <span className="details__info__actions__button__text">Editar</span>  
                   </button>
                 )}
                 <button
@@ -80,14 +80,14 @@ export const PhotoPage = () => {
                   onClick={(event) => handleToggleFav(event, image)}
                 >
                   <img src={isPhotoFav ? saveIconGreen : saveIconBlack} alt="save icon" className="details__info__actions__button__img" />
-                  <span>Guardar</span>
+                  <span className="details__info__actions__button__text">Guardar</span>
                 </button>
                 <button
                   className="details__info__actions__button"
                   onClick={(event) => handleDownload(event, image.urls.raw)}
                 >
                   <img src={downloadIcon} alt="download icon" className="details__info__actions__button__img" />
-                  <span>Descargar</span>
+                  <span className="details__info__actions__button__text">Descargar</span>
                 </button>
               </section>
             </article>
