@@ -1,6 +1,5 @@
 import { deleteFav } from "../../slices/favSlice";
-import { useFavState } from "../../hooks/useFavState";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import FileSaver from "file-saver";
@@ -9,9 +8,10 @@ import searchIcon from "../../public/search-grey.svg";
 import downloadIcon from "../../public/download.svg";
 import eyeSlashIcon from "../../public/eye-slash-grey.svg";
 import "./FavPage.css";
+
 export const FavPage = () => {  
   const dispatch = useDispatch();
-  const { favData } = useFavState();
+  const { data: favData } = useSelector((state) => state.fav);
   const navigate = useNavigate();
   const [inputData, setInputData] = useState("");
   const [favDataMutation, setFavDataMutation] = useState(null);

@@ -1,8 +1,8 @@
-import { useSearchState } from "../../hooks/useSearchState";
+import { useSelector } from "react-redux";
 import { GalleryCardComponent } from "../GalleryCardComponent/GalleryCardComponent.jsx";
 import "./PhotoGalleryComponent.css"
 export const PhotoGalleryComponent = () => {
-  const { searchData, searchStatus, searchError } = useSearchState();
+  const { data: searchData, status: searchStatus, error: searchError } = useSelector((state) => state.search);
 
   return (
     <section className="gallery">

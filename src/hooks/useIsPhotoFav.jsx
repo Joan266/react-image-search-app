@@ -1,11 +1,10 @@
 import { useState, useEffect } from "react";
-import { useFavState } from "./useFavState";
 import { addFav,deleteFav } from "../slices/favSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 export const useIsPhotoFav = (image) => {
-  const [isPhotoFav, setIsPhotoFav] = useState(false);
-  const { favData, favStatus, favError } = useFavState();
+  const [isPhotoFav, setIsPhotoFav] = useState(false);  
+  const { data: favData } = useSelector((state) => state.fav);
   const [ photoDescription, setPhotoDescription ] = useState(null);
   const dispatch = useDispatch();
 
