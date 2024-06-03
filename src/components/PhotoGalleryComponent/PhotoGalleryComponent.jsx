@@ -29,7 +29,9 @@ export const PhotoGalleryComponent = ({ data, status, error }) => {
   return (
     <section className="gallery">
       {status === "pending" ? (
-        <p>LOADING</p>
+        <div className="simple-spinner">
+          <span></span>
+        </div>
       ) : status === "rejected" ? (
         <p>{error}</p>
       ) : status === "fulfilled" && images.length > 0 ? (
