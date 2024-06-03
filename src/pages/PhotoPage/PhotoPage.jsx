@@ -1,5 +1,5 @@
 import { useLocation, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import FileSaver from "file-saver";
 
 import downloadIcon from "../../public/download-black.svg";
@@ -16,7 +16,7 @@ export const PhotoPage = () => {
   const { isPhotoFav, handleToggleFav, photoDescription } = useIsPhotoFav(image);
   const [isEditDescription, setIsEditDescription] = useState(false);
   const navigate = useNavigate();
-
+useEffect(()=> {console.log(image)},[])
   const goBackToLastRoute = (event) => {
     event.stopPropagation(); 
     navigate(-1)
@@ -55,16 +55,16 @@ export const PhotoPage = () => {
               <img className="details__container__img" src={image.urls.regular} alt={image.alt_description} />
             </article>
             <article className="details__info">
+              <section className="details__info__data">
+                {image.downloads && <div className="details__info__data__item"><p>Downloads</p> <span>{image.downloads}</span></div>}
+                {image.likes && <div className="details__info__data__item"><p>Likes</p> <span>{image.likes}</span></div>}
+                {image.views && <div className="details__info__data__item"><p>Views</p> <span>{image.views}</span></div>}
+                {image.height && <div className="details__info__data__item"><p>Height</p> <span>{image.height}</span></div>}
+                {image.width && <div className="details__info__data__item"><p>Width</p> <span>{image.width}</span></div>}
+              </section>
               {photoDescription && <section className="details__info__description">
                 <p className="details__info__description__text">{photoDescription}</p>
               </section>}
-              <section className="details__info__data">
-                <div className="details__info__data__item"><p>Downloads</p> <span>{image.downloads}</span></div>
-                <div className="details__info__data__item"><p>Likes</p> <span>{image.likes}</span></div>
-                <div className="details__info__data__item"><p>Views</p> <span>{image.views}</span></div>
-                <div className="details__info__data__item"><p>Height</p> <span>{image.height}</span></div>
-                <div className="details__info__data__item"><p>Width</p> <span>{image.width}</span></div>
-              </section>
               <section className="details__info__actions">
                 {isPhotoFav && (
                   <button
