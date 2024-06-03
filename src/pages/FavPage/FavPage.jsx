@@ -1,4 +1,4 @@
-import { deleteFav } from "../../slices/favSlice";
+import { deleteFav } from "../../slices/FavSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";

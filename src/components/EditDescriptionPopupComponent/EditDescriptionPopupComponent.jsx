@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { updateFavDescription } from "../../slices/favSlice";
+import { updateFavDescription } from "../../slices/FavSlice";
 import { useDispatch } from "react-redux";
 import "./EditDescriptionPopupComponent.css";
 export const EditDescriptionPopupComponent = ({

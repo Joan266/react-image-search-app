@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { addFav,deleteFav } from "../slices/favSlice";
+import { addFav,deleteFav } from "../slices/FavSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 export const useIsPhotoFav = (image) => {
