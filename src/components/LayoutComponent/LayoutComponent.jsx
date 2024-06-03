@@ -4,16 +4,12 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { NavComponent } from '../NavComponent/NavComponent.jsx';
 
-import { resetSearchStateData } from '../../slices/SearchSlice/SearchSlice.js'; 
 import { FetchRandomThunk } from '../../slices/SearchSlice/searchThunk.js';
 import { setFavs } from '../../slices/FavSlice.js';
 export const LayoutComponent = () => {  
   const dispatch = useDispatch();
-  const { data: searchData } = useSelector((state) => state.search);
   const { data: favData } = useSelector((state) => state.fav);
-
   useEffect(() => {
-      if (searchData.length !== 0) {dispatch(resetSearchStateData());}
       dispatch(FetchRandomThunk());
   }, []);
   useEffect(() => {

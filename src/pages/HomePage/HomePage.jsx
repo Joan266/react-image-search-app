@@ -1,8 +1,11 @@
 import { PhotoGalleryComponent } from "../../components/PhotoGalleryComponent/PhotoGalleryComponent.jsx"
 import { SearchBarComponent } from "../../components/SearchBarComponent/SearchBarComponent.jsx"
 import { ChipsComponent } from "../../components/ChipsComponent/ChipsComponent.jsx"
+import { useSelector } from "react-redux"
 import "./HomePage.css"
 export const HomePage = () => {  
+  const { randomData, status: randomStatus, error: randomError } = useSelector((state) => state.search);
+  
   const searchWords = [
     "naturaleza", "paisaje", "ciudad", "viaje", "playa", "montaña", 
     "arquitectura", "urbano", "arte", "colorido", "abstracto", 
@@ -28,7 +31,8 @@ export const HomePage = () => {
       <section className="home__chips-container">
         <ChipsComponent searchWords={searchWords}/>
       </section>
-      <PhotoGalleryComponent/>
+      
+      <PhotoGalleryComponent data={randomData} status={randomStatus} error={randomError}/>
     </div>
   )
 }

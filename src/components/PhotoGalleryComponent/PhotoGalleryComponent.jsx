@@ -1,17 +1,14 @@
-import { useSelector } from "react-redux";
 import { GalleryCardComponent } from "../GalleryCardComponent/GalleryCardComponent.jsx";
 import "./PhotoGalleryComponent.css"
-export const PhotoGalleryComponent = () => {
-  const { randomData, status: searchStatus, error: searchError } = useSelector((state) => state.search);
-
+export const PhotoGalleryComponent = ({data, status, error}) => {
   return (
     <section className="gallery">
-      {searchStatus === "pending" ? (
+      {status === "pending" ? (
         <p>LOADING</p>
-      ) : searchStatus === "rejected" ? (
-        <p>{searchError}</p>
-      ) : searchStatus === "fulfilled" && randomData && randomData.length > 0 ? (
-        randomData.map((image) => (
+      ) : status === "rejected" ? (
+        <p>{error}</p>
+      ) : status === "fulfilled" && data && data.length > 0 ? (
+        data.map((image) => (
           <GalleryCardComponent image={image} key={image.id}/>
         ))
       ) : null}

@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch,useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { PhotoGalleryComponent } from "../../components/PhotoGalleryComponent/PhotoGalleryComponent.jsx";
 import { ChipsComponent } from "../../components/ChipsComponent/ChipsComponent.jsx";
@@ -7,6 +7,8 @@ import { FetchSearchThunk } from "../../slices/SearchSlice/searchThunk.js"
 import "./SearchPage.css"
 export const SearchPage = () => {
   const dispatch = useDispatch();
+  const { searchData, status: searchStatus, error: searchError } = useSelector((state) => state.search);
+
   const { query } = useParams();
   const searchWords = [
     "naturaleza", "paisaje", "ciudad", "viaje", "playa", "montaña", 
@@ -33,7 +35,7 @@ export const SearchPage = () => {
       <section className="home__chips-container">
         <ChipsComponent searchWords={searchWords}/>
       </section>
-      <PhotoGalleryComponent />
+      <PhotoGalleryComponent data={searchData} status={searchStatus} error={searchError}/>
     </div>
   );
 };
