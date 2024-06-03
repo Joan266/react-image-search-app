@@ -4,14 +4,10 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { NavComponent } from '../NavComponent/NavComponent.jsx';
 
-import { FetchRandomThunk } from '../../slices/SearchSlice/searchThunk.js';
 import { setFavs } from '../../slices/FavSlice.js';
 export const LayoutComponent = () => {  
   const dispatch = useDispatch();
   const { data: favData } = useSelector((state) => state.fav);
-  useEffect(() => {
-      dispatch(FetchRandomThunk());
-  }, []);
   useEffect(() => {
     const localStorageFavData = localStorage.getItem('favData');
     if (localStorageFavData) {

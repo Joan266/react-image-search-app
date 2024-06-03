@@ -1,11 +1,18 @@
 import { PhotoGalleryComponent } from "../../components/PhotoGalleryComponent/PhotoGalleryComponent.jsx"
 import { SearchBarComponent } from "../../components/SearchBarComponent/SearchBarComponent.jsx"
 import { ChipsComponent } from "../../components/ChipsComponent/ChipsComponent.jsx"
-import { useSelector } from "react-redux"
+import { useSelector,useDispatch } from "react-redux"
+import { useEffect } from "react"
+import { FetchRandomThunk } from '../../slices/SearchSlice/searchThunk.js';
 import "./HomePage.css"
 export const HomePage = () => {  
   const { randomData, status: randomStatus, error: randomError } = useSelector((state) => state.search);
-  
+  const dispatch =  useDispatch();
+  useEffect(() => {
+    if (randomStatus === 'idle') {
+        dispatch(FetchRandomThunk())
+    }
+  }, [randomStatus, randomData])
   const searchWords = [
     "naturaleza", "paisaje", "ciudad", "viaje", "playa", "montaña", 
     "arquitectura", "urbano", "arte", "colorido", "abstracto", 
