@@ -1,18 +1,16 @@
-/* .gallery {
-  column-count: 3;
-  column-gap: 0.5em;
-  column-width: 14em;
-  margin: 0em 1em;
-  position: relative;
+.gallery {
+  margin: 0 0.5em;
+  display: grid;
+  grid-gap: 0.5em; 
+  grid-template-columns: repeat(auto-fill, minmax(15em, 1fr));
+  grid-auto-rows: 0; 
 }
-
 .gallery__item {
   height: auto;
   margin: 0;
   position: relative;
   cursor:pointer;
-  margin-bottom: 1em;
-}
+} 
 .gallery__item:hover .gallery__item__mask{
   display: block;
 }
@@ -51,7 +49,7 @@
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), transparent);
 }
 .gallery__item__mask--bottom {
-  bottom: 0.45em;
+  bottom: 0;
   left: 0;
   height: 3.5em;
   width: 100%;
@@ -119,18 +117,26 @@
     transform: rotate(360deg);
   }
 }
-
+.bottom-ref{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0.25em;
+  background-color: aqua;
+}
 @media (min-width: 1200px) {
   .gallery {
+    margin: 0 0.75em;
     display: grid;
-    grid-gap: 2em; /* [1] Add some gap between rows and columns */
-    grid-template-columns: repeat( auto-fill, minmax( 200px, 1fr ) ); /* [2] Make columns adjust according to the available viewport */
-    grid-auto-rows: 250px; /* [3] Set the height for implicitly-created row track */
+    grid-gap: 0.75em;
+    grid-template-columns: repeat(auto-fill, minmax(18.5em, 1fr)); 
+    grid-auto-rows: 0; 
   }
-  .col--2x {
-    grid-row-end: span 2;
- }
- .col--3x {
-    grid-row-end: span 3;
- }
-} */
+  .gallery__item {
+    height: auto;
+    margin: 0;
+    position: relative;
+    cursor:pointer;
+  } 
+}

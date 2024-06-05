@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { GalleryCardComponent } from "../GalleryCardComponent/GalleryCardComponent.jsx";
 import "./PhotoGalleryComponent.css";
 import { toast } from 'react-toastify';
@@ -10,6 +10,7 @@ export const PhotoGalleryComponent = ({ data, status, error }) => {
   useEffect(() => {
     if (status === 'fulfilled') {
       setImages(data);
+      console.log(data)
     } else if (status === 'rejected') {
       console.log(error);
       toast.error('API request limit reached, try searching for photos again in 1 hour', {
@@ -26,19 +27,19 @@ export const PhotoGalleryComponent = ({ data, status, error }) => {
     }
   }, [status, data, error]);
 
+
+
   return (
     <section className="gallery">
-      {status === "pending" ? (
+      { images.length > 0 && 
+          images.map((image,index) => <GalleryCardComponent image={image} key={`${image.id}${index}`} />)
+       }
+       {status === "pending" && 
         <div className="simple-spinner">
           <span></span>
-        </div>
-      ) : status === "rejected" ? (
-        <p>{error}</p>
-      ) : status === "fulfilled" && images.length > 0 ? (
-        images.map((image) => (
-          <GalleryCardComponent image={image} key={image.id} />
-        ))
-      ) : null}
+        </div>}
     </section>
   );
 };
+
+

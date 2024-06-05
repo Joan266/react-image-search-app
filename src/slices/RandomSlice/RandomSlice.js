@@ -1,35 +1,36 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { FetchSearchThunk } from "./searchThunk";
+import { FetchRandomThunk } from "./randomThunk";
 
-const SearchSlice = createSlice({
-  name: 'search',
+const RandomSlice = createSlice({
+  name: 'random',
   initialState: {
     status: "idle",
     data: [],
     error: null,
     total:null,
     total_pages:null,
-    count:20,
+    count:16,
     page: 1,
   },
   reducers: {
-    resetSearchStateData(state) {
+    resetRandomStateData(state) {
       state.data = [];
       state.total = null;
       state.total_pages = null;
       state.page = 1;
+    },
+    addOneToRandomStatePage(state){
+      state.page = state.page + 1;
     }
+
   },
   extraReducers: (builder) => {
-    builder.addCase(FetchSearchThunk.pending, (state, action) => {
+    builder.addCase(FetchRandomThunk.pending, (state, action) => {
         state.status = 'pending'
     })
-    .addCase(FetchSearchThunk.fulfilled, (state, action) => {
-       const { results, total, total_pages } = action.payload;
+    .addCase(FetchRandomThunk.fulfilled, (state, action) => {
       state.status = "fulfilled";
-      state.total = total;
-      state.total_pages = total_pages;
-      const filtered_results = results.map(result => ({
+      const filtered_results = action.payload.map(result => ({
         id: result.id,
         urls: result.urls,
         links: result.links,
@@ -42,15 +43,14 @@ const SearchSlice = createSlice({
         downloads: result.downloads
       }));
       state.data = [...state.data, ...filtered_results] 
-  
     })
-    .addCase(FetchSearchThunk.rejected, (state, action) => {
+    .addCase(FetchRandomThunk.rejected, (state, action) => {
       state.status = 'rejected'
       state.error = action.error
     })
 }
 })
 
-export const { resetSearchStateData } = SearchSlice.actions;
-export const SearchSliceReducer = SearchSlice.reducer;
+export const { resetRandomStateData,addOneToRandomStatePage } = RandomSlice.actions;
+export const RandomSliceReducer = RandomSlice.reducer;
 
