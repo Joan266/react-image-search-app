@@ -22,21 +22,18 @@ export const GalleryCardComponent = ({image}) => {
   
   return(
     <figure className="gallery__item" id={image.id} onClick={() => handleGalleryItemClick()}>
-      <div className="gallery__item__mask gallery__item__mask--top">
-        <button
-          className="gallery__item__mask__button"
-          onClick={(event) => handleDownload(event)}
-        >
-          <img src={downloadIcon} alt="download icon" className="gallery__item__mask__button__img" />
-        </button>
-        <button
-          className = {isPhotoFav? "gallery__item__mask__button gallery__item__mask__button--saved":"gallery__item__mask__button"}         
-          onClick={(event) => handleToggleFav(event)}
-        >
-          <img src={isPhotoFav ? saveIconGreen : saveIcon} alt="save icon" className="gallery__item__mask__button__img" />
-        </button>
-      </div>
-      <div className="gallery__item__mask gallery__item__mask--bottom"></div>
+      <button
+        className="gallery__item__button gallery__item__button--download"
+        onClick={(event) => handleDownload(event)}
+      >
+        <img src={downloadIcon} alt="download icon" className="gallery__item__button__img" />
+      </button>
+      <button
+        className = {isPhotoFav? "gallery__item__button gallery__item__button--saved":"gallery__item__button"}         
+        onClick={(event) => handleToggleFav(event)}
+      >
+        <img src={isPhotoFav ? saveIconGreen : saveIcon} alt="save icon" className="gallery__item__button__img" />
+      </button>
       <img
         className="gallery__img"
         src={image.urls.small}
