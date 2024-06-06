@@ -12,13 +12,12 @@ export const HomePage = () => {
   const { data: randomData, status: randomStatus, error: randomError, page, count } = useSelector(state => state.random);
   const dispatch = useDispatch();
   const bottomRef = useRef(null);
-  const galleryRef = useRef(null);
+  const homeGalleryRef = useRef(null);
   const [images, setImages] = useState([]);
   const [ isNextPage , setIsNextPage]= useState(false);
 
   useEffect(() => {
     if (randomStatus === 'idle') {
-      dispatch(resetRandomStateData());
       dispatch(FetchRandomThunk({ page, count }));
     } else if (randomStatus === 'fulfilled') {
       setImages(randomData);
@@ -64,30 +63,32 @@ useEffect(()=>{
     dispatch(addOneToRandomStatePage())
   } 
 },[isNextPage]);
-  useEffect(() => {
-    const resizeAllMasonryItems = () => {
-      const grid = galleryRef.current;
-      const rowGap = parseInt(window.getComputedStyle(grid).getPropertyValue('grid-row-gap'));
-      const rowHeight = parseInt(window.getComputedStyle(grid).getPropertyValue('grid-auto-rows'));
-      const columnGap = parseInt(window.getComputedStyle(grid).getPropertyValue('grid-column-gap'));
-      const columnWidth = parseInt(window.getComputedStyle(grid).getPropertyValue('grid-template-columns').split(' ')[0]); 
-      images.forEach(image => resizeMasonryItem(image,rowGap,rowHeight,columnGap,columnWidth));
-    };
+useEffect(() => {
+  const resizeAllMasonryItems = () => {
+    const grid = homeGalleryRef.current;
+    if (!grid) return;
 
-    const resizeMasonryItem = (image,rowGap,rowHeight,columnGap,columnWidth) => {
-      const h2 = (columnWidth)*image.height/image.width;
-      const rowSpan = Math.round((h2+ rowGap) / (rowHeight + rowGap));
+    const rowGap = parseInt(window.getComputedStyle(grid).getPropertyValue('grid-row-gap'));
+    const rowHeight = parseInt(window.getComputedStyle(grid).getPropertyValue('grid-auto-rows'));
+    const columnWidth = parseInt(window.getComputedStyle(grid).getPropertyValue('grid-template-columns').split(' ')[0]);
 
+    images.forEach(image => {
       const item = document.getElementById(image.id);
-      item.style.gridRowEnd = `span ${rowSpan}`;
-    };
-    resizeAllMasonryItems()
-    window.addEventListener('resize', resizeAllMasonryItems);
+      if (item) {
+        const imageHeight = (columnWidth) * image.height / image.width;
+        const rowSpan = Math.ceil((imageHeight + rowGap) / (rowHeight + rowGap));
+        item.style.gridRowEnd = `span ${rowSpan}`;
+      }
+    });
+  };
 
-    return () => {
-      window.removeEventListener('resize', resizeAllMasonryItems);
-    };
-  }, [images]);
+  resizeAllMasonryItems();
+  window.addEventListener('resize', resizeAllMasonryItems);
+
+  return () => {
+    window.removeEventListener('resize', resizeAllMasonryItems);
+  };
+}, [images]);
 
   return (
     <div className="home">
@@ -101,7 +102,7 @@ useEffect(()=>{
         </div>
       </section>
       <section className="home__chips-container"></section>
-      <section className="home__gallery" ref={galleryRef}>
+      <section className="home__gallery" ref={homeGalleryRef}>
         {images.length > 0 && images.map((image, index) => (
           <GalleryCardComponent image={image} key={`${image.id}${index}`} />
         ))}

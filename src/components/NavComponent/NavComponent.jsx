@@ -6,6 +6,8 @@ export const NavComponent = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
   const isHomePage = location.pathname === '/';
+  const isSearchPage = location.pathname.startsWith('/search');
+  const isFavPage = location.pathname === '/fav';
 
   useEffect(() => {
     const handleScroll = () => {
@@ -36,13 +38,13 @@ export const NavComponent = () => {
       </div>
       <div className="nav__container">
         <Link to="/">
-          <div className={`nav__container__fav-link ${location.pathname === '/' ? 'nav__container__fav-link--active' : ''}`}>Inicio</div>
+          <div className={`nav__container__fav-link ${isHomePage ? 'nav__container__fav-link--active' : ''}`}>Inicio</div>
         </Link>
         <Link to="/search">
-          <div className={`nav__container__fav-link ${location.pathname === '/search' ? 'nav__container__fav-link--active' : ''}`}>Explorar</div>
+          <div className={`nav__container__fav-link ${isSearchPage ? 'nav__container__fav-link--active' : ''}`}>Explorar</div>
         </Link>
         <Link to="/fav">
-          <div className={`nav__container__fav-link ${location.pathname === '/fav' ? 'nav__container__fav-link--active' : ''}`}>Favoritos</div>
+          <div className={`nav__container__fav-link ${isFavPage ? 'nav__container__fav-link--active' : ''}`}>Favoritos</div>
         </Link>
       </div>
     </nav>
