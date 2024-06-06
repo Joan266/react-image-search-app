@@ -9,7 +9,7 @@ const RandomSlice = createSlice({
     error: null,
     total:null,
     total_pages:null,
-    count:16,
+    count:32,
     page: 1,
   },
   reducers: {

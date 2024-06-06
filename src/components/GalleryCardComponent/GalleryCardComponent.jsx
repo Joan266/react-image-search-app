@@ -4,6 +4,8 @@ import saveIconGreen from "../../public/save-green.svg";
 import FileSaver from "file-saver";
 import { useNavigate } from "react-router-dom";
 import { useIsPhotoFav } from "../../hooks/useIsPhotoFav";
+import "./GalleryCardComponent.css";
+
 export const GalleryCardComponent = ({image}) => {
   const navigate = useNavigate();
   const { isPhotoFav, handleToggleFav } = useIsPhotoFav(image);

@@ -7,7 +7,6 @@ import { GalleryCardComponent } from '../../components/GalleryCardComponent/Gall
 import { toast } from 'react-toastify';
 import { Bounce } from 'react-toastify';
 import './HomePage.css';
-import './PhotoGalleryComponent.css';
 
 export const HomePage = () => {
   const { data: randomData, status: randomStatus, error: randomError, page, count } = useSelector(state => state.random);
@@ -102,7 +101,7 @@ useEffect(()=>{
         </div>
       </section>
       <section className="home__chips-container"></section>
-      <section className="gallery" ref={galleryRef}>
+      <section className="home__gallery" ref={galleryRef}>
         {images.length > 0 && images.map((image, index) => (
           <GalleryCardComponent image={image} key={`${image.id}${index}`} />
         ))}

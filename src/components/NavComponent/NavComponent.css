@@ -86,7 +86,7 @@
 
 @media (min-width: 1200px) {
   .nav {
-    height: 4em;
+    height: 3.5em;
   }
 
   .nav__search-bar-container {
@@ -94,7 +94,7 @@
   }
 
   .nav__logo {
-    font-size: 1.9rem;
+    font-size: 1.8rem;
     margin-left: 1em;
   }
 
