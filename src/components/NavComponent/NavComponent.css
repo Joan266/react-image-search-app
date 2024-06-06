@@ -21,11 +21,11 @@
 }
 
 .nav__search-bar-container {
+  display:none;
   border-radius: 2em;
   background-color: whitesmoke;
   width: 60%;
   height: 40%;
-  display: flex;
   align-items: center;
   padding: 0.1em 1em;
 }
@@ -40,14 +40,18 @@
   padding: 0 0.1em;
 }
 
-.nav__fav-link {
-  padding: 0.4em 0.8em;
-  border-radius: 2em;
-  font-size: 0.8rem;
-  font-weight: 500;
-  margin: 0 0.6em;
+.nav__container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5em;
+  margin-right: 0.5em;
+}
+
+.nav__container__fav-link {
+  font-size: 0.85rem;
+  font-weight: 600;
   cursor: pointer;
-  transition: border 300ms ease;
 }
 
 .nav--regular .nav__search-bar-container {
@@ -60,7 +64,7 @@
   background-color: black;
 }
 
-.nav--regular .nav__fav-link {
+.nav--regular .nav__container__fav-link {
   color: rgba(128, 128, 128, 0.855);
 }
 
@@ -69,7 +73,7 @@
 }
 
 .nav--top-home .nav__logo {
-  color: gainsboro;
+  color: gray;
   background-color: white;
 }
 .nav__logo__text--sort {
@@ -78,34 +82,36 @@
 .nav__logo__text--long {
   display: none;
 }
-.nav--top-home .nav__fav-link {
-  background-color: rgba(220, 220, 220, 0.305);
-  color: white;
-  border: 1px solid gainsboro;
+.nav--top-home .nav__container__fav-link {
+  color: gainsboro;
 }
-
+.nav--top-home .nav__container__fav-link--active {
+  color: #e6ea08;
+}
+.nav--regular .nav__container__fav-link--active {
+  color: #EAB308;
+}
 @media (min-width: 1200px) {
   .nav {
     height: 3.5em;
   }
 
-  .nav__search-bar-container {
-    height: 60%;
-  }
-
+ 
   .nav__logo {
     font-size: 1.8rem;
     margin-left: 1em;
   }
-
-  .nav__fav-link {
-    padding: 0.6em 1.2em;
-    font-size: 1rem;
+  .nav__container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1.5em;
     margin-right: 2em;
   }
-  .nav--regular .nav__fav-link {
-    border: 1px solid gainsboro;
+  .nav__container__fav-link {
+    font-size: 1rem;
   }
+
   .nav--top-home .nav__logo {
     color: white;
     background-color: transparent;
@@ -115,24 +121,22 @@
     color: black;
   }
 
-  .nav--top-home .nav__fav-link {
-    background-color: rgba(220, 220, 220, 0.305);
-    color: white;
-    border: 1px solid gainsboro;
+
+  .nav--top-home .nav__container__fav-link:hover {
+    color: #e6ea08;
   }
 
-  .nav--top-home .nav__fav-link:hover {
-    border: 1px solid white;
-  }
-
-  .nav--regular .nav__fav-link:hover {
-    background-color: rgba(220, 220, 220, 0.05);
-    border: 1px solid grey;
+  .nav--regular .nav__container__fav-link:hover {
+    color: #EAB308;
   }
   .nav__logo__text--sort {
     display: none
   }
   .nav__logo__text--long {
     display: block;
+  }
+  .nav__search-bar-container {
+    display: flex;
+    height: 60%;
   }
 }

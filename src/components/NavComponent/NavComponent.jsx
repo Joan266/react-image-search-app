@@ -24,16 +24,27 @@ export const NavComponent = () => {
   }, []);
 
   return (
-    <nav className={`nav ${(isScrolled && isHomePage) ? 'nav--regular' : (!isScrolled && isHomePage) ? 'nav--top-home' :'nav--regular'}`}>
-      <article className="nav__logo">
-        <Link to="/"><span className="nav__logo__text nav__logo__text--long">OxygenPhotos</span><span className="nav__logo__text nav__logo__text--sort">OP</span></Link>
-      </article>
+    <nav className={`nav ${(isScrolled && isHomePage) ? 'nav--regular' : (!isScrolled && isHomePage) ? 'nav--top-home' : 'nav--regular'}`}>
+      <div className="nav__logo">
+        <Link to="/">
+          <span className="nav__logo__text nav__logo__text--long">OxygenPhotos</span>
+          <span className="nav__logo__text nav__logo__text--sort">OP</span>
+        </Link>
+      </div>
       <div className="nav__search-bar-container">
         <SearchBarComponent />
       </div>
-      <Link to="/fav">
-        <div className="nav__fav-link">Favoritos </div>
-      </Link>
+      <div className="nav__container">
+        <Link to="/">
+          <div className={`nav__container__fav-link ${location.pathname === '/' ? 'nav__container__fav-link--active' : ''}`}>Inicio</div>
+        </Link>
+        <Link to="/search">
+          <div className={`nav__container__fav-link ${location.pathname === '/search' ? 'nav__container__fav-link--active' : ''}`}>Explorar</div>
+        </Link>
+        <Link to="/fav">
+          <div className={`nav__container__fav-link ${location.pathname === '/fav' ? 'nav__container__fav-link--active' : ''}`}>Favoritos</div>
+        </Link>
+      </div>
     </nav>
   );
 };

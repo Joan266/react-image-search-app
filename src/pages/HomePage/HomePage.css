@@ -24,7 +24,7 @@
   height: 100%;
   background: url('../../public/background-photo1.webp') no-repeat center center;
   background-size: cover;
-  filter: brightness(65%); 
+  filter: brightness(50%); 
   z-index: -1; 
 }
 
