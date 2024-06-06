@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch,useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { PhotoGalleryComponent } from "../../components/PhotoGalleryComponent/PhotoGalleryComponent.jsx";
 import { ChipsComponent } from "../../components/ChipsComponent/ChipsComponent.jsx";
 import { FetchSearchThunk } from "../../slices/SearchSlice/searchThunk.js"
 import "./SearchPage.css"
@@ -35,7 +34,7 @@ export const SearchPage = () => {
       <section className="home__chips-container">
         <ChipsComponent searchWords={searchWords}/>
       </section>
-      <PhotoGalleryComponent data={searchData} status={searchStatus} error={searchError}/>
+      {/* <PhotoGalleryComponent data={searchData} status={searchStatus} error={searchError}/> */}
     </div>
   );
 };

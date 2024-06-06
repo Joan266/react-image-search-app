@@ -22,33 +22,35 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: url('../../public/background-photo1.webp') no-repeat center center;
+  background: url('../../public/background-photo3.webp') no-repeat center center;
   background-size: cover;
-  filter: brightness(50%); 
+  filter: brightness(65%); 
   z-index: -1; 
 }
 
+
 .home__header__content {
   width: 48em;
-  margin: 0 0.8em 0.5em 0.8em;
+  margin: 1em 0.8em 0.5em 0.8em;
 }
 
 .home__header__content__title {
   font-weight: 700;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
 }
 
 .home__header__content__subtitle {
   font-weight: 400;
-  font-size: 0.6rem;
+  font-size: 0.75rem;
   margin-top: 0.9em;
 }
 
 .home__header__content__search-bar-container {
-  border-radius: 2em;
+  border-radius: 2.2em;
   background-color: white;
   display: flex;
   align-items: center;
+  font-size: 0.7rem;
   padding: 0.45em 1.20em;
   margin-top: 1.4em;
 }
@@ -75,26 +77,28 @@
 
 @media (min-width: 1200px) {
   .home__header {
-    height: 25em;
+    height: 22em;
   }
 
   .home__header__content {
     margin-bottom: 1.8em;
     margin-left: 0.7em;
     margin-right: 0.7em;
+    margin-top: 1em;
+    width: 42em;
   }
 
   .home__header__content__title {
-    font-size: 1.85rem;
+    font-size: 1.65rem;
   }
 
   .home__header__content__subtitle {
-    font-size: 0.75rem;
+    font-size: 0.65rem;
   }
 
   .home__header__content__search-bar-container {
-    padding: 0.6em 1.4em;
-    font-size: 0.8rem;
+    padding: 0.6em 1.6em;
+    font-size: 0.65rem;
   }
   .home__gallery {
     margin: 0 0.75em;

@@ -6,7 +6,7 @@
   justify-content: space-between;
   align-items: center;
   height: 3.5em;
-  z-index: 3;
+  z-index: 10;
   transition: background-color 300ms ease;
 }
 
@@ -24,7 +24,7 @@
   display:none;
   border-radius: 2em;
   background-color: whitesmoke;
-  width: 60%;
+  width: 70%;
   height: 40%;
   align-items: center;
   padding: 0.1em 1em;
@@ -44,19 +44,24 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+  width: 30%;
   gap: 0.5em;
+  justify-content: right;
   margin-right: 0.5em;
+  margin-left: 0.5em;
 }
 
 .nav__container__fav-link {
   font-size: 0.85rem;
   font-weight: 600;
   cursor: pointer;
+  text-align: center;
 }
 
 .nav--regular .nav__search-bar-container {
   height: 55%;
   font-size: x-small;
+  margin: 0 1em;
 }
 
 .nav--regular .nav__logo {
@@ -106,10 +111,10 @@
     flex-direction: row;
     align-items: center;
     gap: 1.5em;
-    margin-right: 2em;
+    margin-right: 1em;
   }
   .nav__container__fav-link {
-    font-size: 1rem;
+    font-size: 0.9rem;
   }
 
   .nav--top-home .nav__logo {
