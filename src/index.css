@@ -49,3 +49,20 @@ a {
     transform: rotate(360deg);
   }
 }
+
+/* For Chrome, Safari, Edge, Opera */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* For Firefox */
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+/* Optional: To ensure the input looks consistent across browsers */
+input[type="number"] {
+    appearance: none;
+}

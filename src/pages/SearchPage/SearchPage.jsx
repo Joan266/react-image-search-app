@@ -5,29 +5,46 @@ import { toast } from 'react-toastify';
 import { Bounce } from 'react-toastify';
 import { FetchSearchThunk } from "../../slices/SearchSlice/searchThunk.js";
 import { FetchRandomThunk } from "../../slices/RandomSlice/randomThunk.js";
+import { resetRandomStateData } from "../../slices/RandomSlice/RandomSlice.js";
+import { resetSearchStateData } from "../../slices/SearchSlice/SearchSlice.js";
 import { GalleryCardComponent } from "../../components/GalleryCardComponent/GalleryCardComponent.jsx";
 import "./SearchPage.css";
 
 export const SearchPage = () => {
   const dispatch = useDispatch();
-  const { query } = useParams();
+  const { query, page } = useParams();
 
   const search = useSelector((state) => state.search);
   const random = useSelector((state) => state.random);
-  const { status, error, data } = query ? search : random;
+  const { status, error, data,  total, total_pages, count} = query ? search : random;
 
   const searchGalleryRef = useRef(null);
   const [images, setImages] = useState([]);
+  const [ pageValue, setPageValue ] = useState(page);
 
+  const handleChangePage = () => {
+
+  };
+  
+  const handleGoNextPage = () => {
+
+  };
+  const handleGoPreviousPage = () => {
+
+  };
+ useEffect(()=>{
+    if (query) {
+      dispatch(resetSearchStateData())
+      dispatch(FetchSearchThunk({ query, page, count }));
+    }
+    if (!query) {
+      dispatch(resetRandomStateData());
+      dispatch(FetchRandomThunk({ page, count }));
+    }
+ },[query,dispatch,count,page])
 
   useEffect(() => {
-    if (status === 'idle') {
-      if (query) {
-        dispatch(FetchSearchThunk({ page: 1, count: 16 ,query }));
-      } else {
-        dispatch(FetchRandomThunk({ page: 1, count: 16 }));
-      }
-    } else if (status === 'fulfilled') {
+    if (status === 'fulfilled') {
       setImages(data);
     } else if (status === 'rejected') {
       console.log(error);
@@ -93,6 +110,38 @@ export const SearchPage = () => {
         ) : (
           status === 'fulfilled' && <p>No se encontraron imágenes.</p>
         )}
+      </section>
+      <section className="search__pagination search__pagination--big">
+        <span className="search__pagination__info">{`1-${count} de ${total} imágenes`}</span>
+        <div className="search__pagination__next-page">
+          <button className="search__pagination__next-page__button" onClick={handleGoPreviousPage}>Página siguiente</button>
+        </div>
+        <div className="search__pagination__controler">
+          <button className="search__pagination__controler__button">{'<'}</button>
+          <form onSubmit={handleChangePage} className="search__pagination__controler__form">
+            <input type="number" value={page} className="search__pagination__controler__form__input">
+            </input>
+            <span className="search__pagination__controler__form__span">{`/ ${total_pages}`}</span>
+          </form>    
+          <button className="search__pagination__controler__button" onClick={handleGoNextPage}>{'>'}</button>
+        </div>
+      </section>
+      <section className="search__pagination">
+        <div className="search__pagination__next-page">
+          <button className="search__pagination__next-page__button" onClick={handleGoPreviousPage}>Página siguiente</button>
+        </div>
+        <div className="search__pagination__bottom">
+          <span className="search__pagination__info">{`1-${count} de ${total} imágenes`}</span>
+          <div className="search__pagination__controler">
+            <button className="search__pagination__controler__button">{'<'}</button>
+            <form onSubmit={handleChangePage} className="search__pagination__controler__form">
+              <input type="number" value={page} className="search__pagination__controler__form__input">
+              </input>
+              <span className="search__pagination__controler__form__span">{`/ ${total_pages}`}</span>
+            </form>
+            <button className="search__pagination__controler__button" onClick={handleGoNextPage}>{'>'}</button>
+          </div>
+        </div>
       </section>
     </div>
   );

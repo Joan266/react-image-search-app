@@ -7,16 +7,14 @@ const RandomSlice = createSlice({
     status: "idle",
     data: [],
     error: null,
-    total:null,
-    total_pages:null,
-    count:32,
+    total:240,
+    total_pages:8,
+    count:30,
     page: 1,
   },
   reducers: {
     resetRandomStateData(state) {
       state.data = [];
-      state.total = null;
-      state.total_pages = null;
       state.page = 1;
     },
     addOneToRandomStatePage(state){
@@ -42,7 +40,10 @@ const RandomSlice = createSlice({
         views: result.views,
         downloads: result.downloads
       }));
-      state.data = [...state.data, ...filtered_results] 
+      const existingIds = state.data.map(item => item.id);
+      const newUniqueResults = filtered_results.filter(result => !existingIds.includes(result.id));
+
+      state.data = [...state.data, ...newUniqueResults];
     })
     .addCase(FetchRandomThunk.rejected, (state, action) => {
       state.status = 'rejected'

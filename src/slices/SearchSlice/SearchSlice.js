@@ -9,7 +9,7 @@ const SearchSlice = createSlice({
     error: null,
     total:null,
     total_pages:null,
-    count:20,
+    count:30,
     page: 1,
   },
   reducers: {

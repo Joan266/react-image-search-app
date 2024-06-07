@@ -41,6 +41,10 @@
   font-weight: 600;
 } */
 
+.gallery__item__button {
+  display: none;
+}
+
 @media (min-width: 1200px) {
   .gallery__item {
     position: relative;

@@ -9,7 +9,7 @@ import { Bounce } from 'react-toastify';
 import './HomePage.css';
 
 export const HomePage = () => {
-  const { data: randomData, status: randomStatus, error: randomError, page, count } = useSelector(state => state.random);
+  const { data: randomData, status: randomStatus, error: randomError,  total, total_pages, count, page  } = useSelector(state => state.random);
   const dispatch = useDispatch();
   const bottomRef = useRef(null);
   const homeGalleryRef = useRef(null);
@@ -18,6 +18,7 @@ export const HomePage = () => {
 
   useEffect(() => {
     if (randomStatus === 'idle') {
+      dispatch(resetRandomStateData());
       dispatch(FetchRandomThunk({ page, count }));
     } else if (randomStatus === 'fulfilled') {
       setImages(randomData);
@@ -56,13 +57,13 @@ export const HomePage = () => {
       observer.disconnect();
     };
   }, [bottomRef, page, randomStatus, dispatch]);
-useEffect(()=>{
-  if (isNextPage && page < 12 && randomStatus === 'fulfilled') {
-    
-    dispatch(FetchRandomThunk({ page, count }));
-    dispatch(addOneToRandomStatePage())
-  } 
-},[isNextPage]);
+  useEffect(()=>{
+    if (isNextPage && page < total_pages && randomStatus === 'fulfilled') {
+      
+      dispatch(FetchRandomThunk({ page, count }));
+      dispatch(addOneToRandomStatePage())
+    } 
+  },[isNextPage]);
 useEffect(() => {
   const resizeAllMasonryItems = () => {
     const grid = homeGalleryRef.current;
