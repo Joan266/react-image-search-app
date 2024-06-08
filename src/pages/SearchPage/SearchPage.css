@@ -96,7 +96,7 @@
   font-size: 0.75rem;
   margin-left: 0.5em;
 }
-.search__pagination--big {
+.search__pagination--desktop {
   display: none;
 }
 @media (min-width: 1200px) { 
@@ -118,7 +118,7 @@
   .search__pagination {
     display: none;
   }
-  .search__pagination--big {
+  .search__pagination--desktop {
     display: flex;
     flex-direction: row;
     justify-content: space-between;

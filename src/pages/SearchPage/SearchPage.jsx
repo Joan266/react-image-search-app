@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { toast } from 'react-toastify';
 import { Bounce } from 'react-toastify';
 import { FetchSearchThunk } from "../../slices/SearchSlice/searchThunk.js";
@@ -12,8 +12,11 @@ import "./SearchPage.css";
 
 export const SearchPage = () => {
   const dispatch = useDispatch();
-  const { query, page } = useParams();
-
+  const navigate = useNavigate();
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const query = searchParams.get('query') || '';
+  const page = parseInt(searchParams.get('page')) || 1;
   const search = useSelector((state) => state.search);
   const random = useSelector((state) => state.random);
   const { status, error, data,  total, total_pages, count} = query ? search : random;
@@ -21,17 +24,36 @@ export const SearchPage = () => {
   const searchGalleryRef = useRef(null);
   const [images, setImages] = useState([]);
   const [ pageValue, setPageValue ] = useState(page);
+  useEffect(() => {
+    console.log("Search Query:", query);
+    console.log("Current Page:", page);
+    console.log("Current PageValue:", pageValue);
+    console.log("Total Pages:", total_pages);
+    console.log("Total:", total);
+    console.log("Data:", data);
+}, [query, page, total_pages, data, pageValue,total]);
 
-  const handleChangePage = () => {
-
+  const handlePageValueChange = (event) => {
+    event.preventDefault()
+    setPageValue(event.target.value)
+  }
+  const handleChangePage = (event) => {
+    event.preventDefault()
+    if(pageValue > 0) {
+      navigate(`/search?query=${query}&page=${pageValue}`);
+    }
+  };
+  const handleGoNextPage = () => {
+    const nextPage = ((total_pages  + page) % total_pages)+ 1 || total_pages;
+    console.log(nextPage)
+    navigate(`/search?query=${query}&page=${nextPage}`);
   };
   
-  const handleGoNextPage = () => {
-
-  };
   const handleGoPreviousPage = () => {
-
+    const previousPage = ((total_pages  + page) % total_pages)- 1 || total_pages;
+    navigate(`/search?query=${query}&page=${previousPage}`);
   };
+
  useEffect(()=>{
     if (query) {
       dispatch(resetSearchStateData())
@@ -111,15 +133,15 @@ export const SearchPage = () => {
           status === 'fulfilled' && <p>No se encontraron imágenes.</p>
         )}
       </section>
-      <section className="search__pagination search__pagination--big">
+      <section className="search__pagination search__pagination--desktop">
         <span className="search__pagination__info">{`1-${count} de ${total} imágenes`}</span>
         <div className="search__pagination__next-page">
-          <button className="search__pagination__next-page__button" onClick={handleGoPreviousPage}>Página siguiente</button>
+          <button className="search__pagination__next-page__button" onClick={handleGoNextPage}>Página siguiente</button>
         </div>
         <div className="search__pagination__controler">
-          <button className="search__pagination__controler__button">{'<'}</button>
+          <button className="search__pagination__controler__button" onClick={handleGoPreviousPage}>{'<'}</button>
           <form onSubmit={handleChangePage} className="search__pagination__controler__form">
-            <input type="number" value={page} className="search__pagination__controler__form__input">
+            <input type="number" value={pageValue} className="search__pagination__controler__form__input" onChange={handlePageValueChange}>
             </input>
             <span className="search__pagination__controler__form__span">{`/ ${total_pages}`}</span>
           </form>    
@@ -128,14 +150,14 @@ export const SearchPage = () => {
       </section>
       <section className="search__pagination">
         <div className="search__pagination__next-page">
-          <button className="search__pagination__next-page__button" onClick={handleGoPreviousPage}>Página siguiente</button>
+          <button className="search__pagination__next-page__button" onClick={handleGoNextPage}>Página siguiente</button>
         </div>
         <div className="search__pagination__bottom">
           <span className="search__pagination__info">{`1-${count} de ${total} imágenes`}</span>
           <div className="search__pagination__controler">
-            <button className="search__pagination__controler__button">{'<'}</button>
+            <button className="search__pagination__controler__button" onClick={handleGoPreviousPage}>{'<'}</button>
             <form onSubmit={handleChangePage} className="search__pagination__controler__form">
-              <input type="number" value={page} className="search__pagination__controler__form__input">
+              <input type="number" value={pageValue} className="search__pagination__controler__form__input" onChange={handlePageValueChange}>
               </input>
               <span className="search__pagination__controler__form__span">{`/ ${total_pages}`}</span>
             </form>

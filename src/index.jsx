@@ -20,8 +20,7 @@ app.render(
           <Route element={<LayoutComponent />}>
             <Route path="/" element={<HomePage />} />
             <Route path="/fav" element={<FavPage/>} />
-            <Route path="/search" element={<SearchPage/>} />
-            <Route path="/search/:query" element={<SearchPage/>} />
+            <Route path="/search" element={<SearchPage />} />
             <Route path="/photo/:id" element={<PhotoPage/>} />
           </Route>
         </Routes>
