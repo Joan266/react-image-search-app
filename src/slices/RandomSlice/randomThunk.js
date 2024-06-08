@@ -9,7 +9,7 @@ export const FetchRandomThunk = createAsyncThunk("random/fetchRandomThunk", asyn
     const request = await fetch(createUnsRandomPhotosUrl(page,count));
     if (request.ok) {
       const data = await request.json();
-      return data;
+      return { page, data };
     }
     return null;
   } catch (Error) {

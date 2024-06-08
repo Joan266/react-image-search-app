@@ -1,7 +1,7 @@
 import { useEffect, useState, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { FetchRandomThunk } from '../../slices/RandomSlice/randomThunk';
-import { resetRandomStateData, addOneToRandomStatePage } from '../../slices/RandomSlice/RandomSlice';
+import { resetRandomStateData } from '../../slices/RandomSlice/RandomSlice';
 import { SearchBarComponent } from '../../components/SearchBarComponent/SearchBarComponent';
 import { GalleryCardComponent } from '../../components/GalleryCardComponent/GalleryCardComponent';
 import { toast } from 'react-toastify';
@@ -18,8 +18,7 @@ export const HomePage = () => {
 
   useEffect(() => {
     if (randomStatus === 'idle') {
-      dispatch(resetRandomStateData());
-      dispatch(FetchRandomThunk({ page, count }));
+      dispatch(FetchRandomThunk({ page:1, count }));
     } else if (randomStatus === 'fulfilled') {
       setImages(randomData);
       console.log(randomData);
@@ -59,9 +58,7 @@ export const HomePage = () => {
   }, [bottomRef, page, randomStatus, dispatch]);
   useEffect(()=>{
     if (isNextPage && page < total_pages && randomStatus === 'fulfilled') {
-      
-      dispatch(FetchRandomThunk({ page, count }));
-      dispatch(addOneToRandomStatePage())
+      dispatch(FetchRandomThunk({ page:page+1, count }));
     } 
   },[isNextPage]);
 useEffect(() => {

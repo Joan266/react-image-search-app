@@ -10,14 +10,10 @@ const SearchSlice = createSlice({
     total:null,
     total_pages:null,
     count:30,
-    page: 1,
   },
   reducers: {
     resetSearchStateData(state) {
       state.data = [];
-      state.total = null;
-      state.total_pages = null;
-      state.page = 1;
     }
   },
   extraReducers: (builder) => {

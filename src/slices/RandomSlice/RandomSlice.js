@@ -10,25 +10,27 @@ const RandomSlice = createSlice({
     total:240,
     total_pages:8,
     count:30,
-    page: 1,
+    page: 0,
   },
   reducers: {
     resetRandomStateData(state) {
       state.data = [];
       state.page = 1;
-    },
-    addOneToRandomStatePage(state){
-      state.page = state.page + 1;
     }
-
   },
   extraReducers: (builder) => {
-    builder.addCase(FetchRandomThunk.pending, (state, action) => {
+    builder.addCase(FetchRandomThunk.pending, (state) => {
         state.status = 'pending'
     })
     .addCase(FetchRandomThunk.fulfilled, (state, action) => {
       state.status = "fulfilled";
-      const filtered_results = action.payload.map(result => ({
+      const { page, data: results } = action.payload;
+    
+      const pageExist = state.data.some(item => item.page === page);
+      if (pageExist) return;
+    
+      const filtered_results = results.map(result => ({
+        page,
         id: result.id,
         urls: result.urls,
         links: result.links,
@@ -38,13 +40,15 @@ const RandomSlice = createSlice({
         height: result.height,
         likes: result.likes,
         views: result.views,
-        downloads: result.downloads
+        downloads: result.downloads,
       }));
+    
       const existingIds = state.data.map(item => item.id);
       const newUniqueResults = filtered_results.filter(result => !existingIds.includes(result.id));
-
+    
       state.data = [...state.data, ...newUniqueResults];
-    })
+      state.page = page;
+    })    
     .addCase(FetchRandomThunk.rejected, (state, action) => {
       state.status = 'rejected'
       state.error = action.error

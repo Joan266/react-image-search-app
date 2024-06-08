@@ -5,8 +5,7 @@ import { toast } from 'react-toastify';
 import { Bounce } from 'react-toastify';
 import { FetchSearchThunk } from "../../slices/SearchSlice/searchThunk.js";
 import { FetchRandomThunk } from "../../slices/RandomSlice/randomThunk.js";
-import { resetRandomStateData } from "../../slices/RandomSlice/RandomSlice.js";
-import { resetSearchStateData } from "../../slices/SearchSlice/SearchSlice.js";
+import { resetSearchStateData } from "../../slices/SearchSlice/SearchSlice.js"
 import { GalleryCardComponent } from "../../components/GalleryCardComponent/GalleryCardComponent.jsx";
 import "./SearchPage.css";
 
@@ -50,24 +49,31 @@ export const SearchPage = () => {
   };
   
   const handleGoPreviousPage = () => {
-    const previousPage = ((total_pages  + page) % total_pages)- 1 || total_pages;
+    const previousPage = ((total_pages  + page - 1) % total_pages)  || total_pages;
     navigate(`/search?query=${query}&page=${previousPage}`);
   };
 
  useEffect(()=>{
+    setPageValue(page)
     if (query) {
-      dispatch(resetSearchStateData())
+      dispatch(resetSearchStateData());
       dispatch(FetchSearchThunk({ query, page, count }));
     }
     if (!query) {
-      dispatch(resetRandomStateData());
-      dispatch(FetchRandomThunk({ page, count }));
+      const isRandomPage = data.some(item => item.page === page);
+      if(isRandomPage) {
+        const filtered_data = data.filter(item => item.page === page)
+        setImages(filtered_data);
+      } else {
+        dispatch(FetchRandomThunk({ page, count }));
+      }
     }
  },[query,dispatch,count,page])
 
   useEffect(() => {
     if (status === 'fulfilled') {
-      setImages(data);
+      const filtered_data = data.filter(item => item.page === page)
+      setImages(query ? data : filtered_data);
     } else if (status === 'rejected') {
       console.log(error);
       toast.error('API request limit reached, try searching for photos again in 1 hour', {
@@ -133,38 +139,43 @@ export const SearchPage = () => {
           status === 'fulfilled' && <p>No se encontraron imágenes.</p>
         )}
       </section>
-      <section className="search__pagination search__pagination--desktop">
-        <span className="search__pagination__info">{`1-${count} de ${total} imágenes`}</span>
-        <div className="search__pagination__next-page">
-          <button className="search__pagination__next-page__button" onClick={handleGoNextPage}>Página siguiente</button>
-        </div>
-        <div className="search__pagination__controler">
-          <button className="search__pagination__controler__button" onClick={handleGoPreviousPage}>{'<'}</button>
-          <form onSubmit={handleChangePage} className="search__pagination__controler__form">
-            <input type="number" value={pageValue} className="search__pagination__controler__form__input" onChange={handlePageValueChange}>
-            </input>
-            <span className="search__pagination__controler__form__span">{`/ ${total_pages}`}</span>
-          </form>    
-          <button className="search__pagination__controler__button" onClick={handleGoNextPage}>{'>'}</button>
-        </div>
-      </section>
-      <section className="search__pagination">
-        <div className="search__pagination__next-page">
-          <button className="search__pagination__next-page__button" onClick={handleGoNextPage}>Página siguiente</button>
-        </div>
-        <div className="search__pagination__bottom">
+      {images && images.length > 0 &&
+      <>
+        <section className="search__pagination search__pagination--desktop">
           <span className="search__pagination__info">{`1-${count} de ${total} imágenes`}</span>
+          <div className="search__pagination__next-page">
+            <button className="search__pagination__next-page__button" onClick={handleGoNextPage}>Página siguiente</button>
+          </div>
           <div className="search__pagination__controler">
             <button className="search__pagination__controler__button" onClick={handleGoPreviousPage}>{'<'}</button>
             <form onSubmit={handleChangePage} className="search__pagination__controler__form">
               <input type="number" value={pageValue} className="search__pagination__controler__form__input" onChange={handlePageValueChange}>
               </input>
               <span className="search__pagination__controler__form__span">{`/ ${total_pages}`}</span>
-            </form>
+            </form>    
             <button className="search__pagination__controler__button" onClick={handleGoNextPage}>{'>'}</button>
           </div>
-        </div>
-      </section>
+        </section>
+        <section className="search__pagination">
+          <div className="search__pagination__next-page">
+            <button className="search__pagination__next-page__button" onClick={handleGoNextPage}>Página siguiente</button>
+          </div>
+          <div className="search__pagination__bottom">
+            <span className="search__pagination__info">{`1-${count} de ${total} imágenes`}</span>
+            <div className="search__pagination__controler">
+              <button className="search__pagination__controler__button" onClick={handleGoPreviousPage}>{'<'}</button>
+              <form onSubmit={handleChangePage} className="search__pagination__controler__form">
+                <input type="number" value={pageValue} className="search__pagination__controler__form__input" onChange={handlePageValueChange}>
+                </input>
+                <span className="search__pagination__controler__form__span">{`/ ${total_pages}`}</span>
+              </form>
+              <button className="search__pagination__controler__button" onClick={handleGoNextPage}>{'>'}</button>
+            </div>
+          </div>
+        </section>
+      </>
+      }
+      
     </div>
   );
 };
