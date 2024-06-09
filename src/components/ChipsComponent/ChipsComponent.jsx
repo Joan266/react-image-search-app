@@ -8,19 +8,24 @@ const shuffleArray = (array) => {
   }
   return array;
 };
-
-export const ChipsComponent = ({ searchWords }) => {
+export const ChipsComponent = () => {
+  const searchWords = [
+    "naturaleza", "paisaje", "ciudad", "viaje", "playa", "montaña", 
+    "arquitectura",   "animales",  "comida", "tecnología", 
+     "construcción","niños","pareja","familia","flor","insecto","jardin",
+    "cielo", "agua", "perro","gato","mujer","hombre","bosque",
+  ];
   const navigate = useNavigate();
   const [shuffledWords, setShuffledWords] = useState([]);
 
   useEffect(() => {
     const shuffled = shuffleArray([...searchWords]).slice(0, 10);
     setShuffledWords(shuffled);
-  }, [searchWords]);
+  }, []);
 
   const handleClick = (event, word) => {
     event.stopPropagation();
-    navigate(`/search/${word}`);
+    navigate(`/search?query=${word}&page=1`);
   };
 
   return (

@@ -7,12 +7,12 @@ export const SearchBarComponent = () => {
   const [inputData, setInputData] = useState("");
 
   const handleChange = (event) => {
-    setInputData(event.target.value.trim());
+    setInputData(event.target.value);
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    navigate(`/search?query=${inputData}&page=1`)
+    navigate(`/search?query=${inputData.trim()}&page=1`)
     setInputData("")
   };
 

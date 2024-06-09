@@ -1,9 +1,9 @@
 import { useEffect, useState, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { FetchRandomThunk } from '../../slices/RandomSlice/randomThunk';
-import { resetRandomStateData } from '../../slices/RandomSlice/RandomSlice';
 import { SearchBarComponent } from '../../components/SearchBarComponent/SearchBarComponent';
 import { GalleryCardComponent } from '../../components/GalleryCardComponent/GalleryCardComponent';
+import { ChipsComponent } from "../../components/ChipsComponent/ChipsComponent"
 import { toast } from 'react-toastify';
 import { Bounce } from 'react-toastify';
 import './HomePage.css';
@@ -99,7 +99,9 @@ useEffect(() => {
           </div>
         </div>
       </section>
-      <section className="home__chips-container"></section>
+      <section className="home__chips-container">
+        <ChipsComponent/>
+      </section>
       <section className="home__gallery" ref={homeGalleryRef}>
         {images.length > 0 && images.map((image, index) => (
           <GalleryCardComponent image={image} key={`${image.id}${index}`} />

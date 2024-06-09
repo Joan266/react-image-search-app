@@ -21,7 +21,7 @@ const SearchSlice = createSlice({
         state.status = 'pending'
     })
     .addCase(FetchSearchThunk.fulfilled, (state, action) => {
-       const { results, total, total_pages } = action.payload;
+      const { results, total, total_pages } = action.payload;
       state.status = "fulfilled";
       state.total = total;
       state.total_pages = total_pages;

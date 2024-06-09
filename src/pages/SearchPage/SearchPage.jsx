@@ -7,6 +7,7 @@ import { FetchSearchThunk } from "../../slices/SearchSlice/searchThunk.js";
 import { FetchRandomThunk } from "../../slices/RandomSlice/randomThunk.js";
 import { resetSearchStateData } from "../../slices/SearchSlice/SearchSlice.js"
 import { GalleryCardComponent } from "../../components/GalleryCardComponent/GalleryCardComponent.jsx";
+import { ChipsComponent } from "../../components/ChipsComponent/ChipsComponent"
 import "./SearchPage.css";
 
 export const SearchPage = () => {
@@ -123,7 +124,7 @@ export const SearchPage = () => {
         <h1 className="search__header__title">Fotos gratis {query ? `de ${query}` : "aleatorias"}</h1>
       </section>
       <section className="home__chips-container">
-        {/* Aquí puedes agregar contenido si lo necesitas */}
+        <ChipsComponent />
       </section>
       <section className="search__gallery" ref={searchGalleryRef}>
         {status === "pending" && (

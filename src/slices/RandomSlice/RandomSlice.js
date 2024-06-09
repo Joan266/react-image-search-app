@@ -45,7 +45,7 @@ const RandomSlice = createSlice({
     
       const existingIds = state.data.map(item => item.id);
       const newUniqueResults = filtered_results.filter(result => !existingIds.includes(result.id));
-    
+
       state.data = [...state.data, ...newUniqueResults];
       state.page = page;
     })    

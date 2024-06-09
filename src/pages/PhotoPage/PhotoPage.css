@@ -60,7 +60,7 @@
 }
 .details__info__description {
   padding: 0.5em ; 
-  border-bottom: 1px solid gainsboro;
+  border-bottom: none;
 }
 
 .details__info__description__text {
