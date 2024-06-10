@@ -1,17 +1,17 @@
 import { useState } from "react";
-import { updateFavDescription } from "../../slices/favSlice";
+import { updateFavDescription } from "../../slices/FavSlice";
 import { useDispatch } from "react-redux";
 import "./EditDescriptionPopupComponent.css";
 export const EditDescriptionPopupComponent = ({
-  photoDescription,
   setIsEditDescription,
-  image
+  description: parentDescription,
+  imageId,
 }) => {
-  const [description, setDescription] = useState(photoDescription);
+  const [description, setDescription] = useState(parentDescription);
   const dispatch = useDispatch();
   const handleEditDescriptionSubmit = (event) => {
     event.preventDefault();
-    dispatch(updateFavDescription({ id: image.id, description:description.trim() }));
+    dispatch(updateFavDescription({ id: imageId, description }));
     alert("Description Updated");
     setIsEditDescription(false);
   };

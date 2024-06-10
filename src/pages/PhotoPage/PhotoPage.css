@@ -43,6 +43,8 @@
   max-height: 50em;
   width: auto;
   max-width: 100%; 
+  margin: 0;
+  padding: 0;
 }
 
 .details__info {
@@ -156,13 +158,15 @@
     display: flex; 
     justify-content: center; 
     align-items: center; 
+    position: relative;
   }
   
   .details__container__img {
     width: auto;
     height: auto; 
     max-height: 50em;
-    max-width: 100%; 
+    max-width: 90%; 
+    padding: 0 2em;
   }
   
   .details__info {
