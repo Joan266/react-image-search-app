@@ -1,0 +1,32 @@
+.search-bar {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  background-color: transparent;
+}
+
+.search-bar__icon {
+  height: 1.2em; 
+  width: 1.2em;  
+  display: inline-block;
+  margin-right: 0.5em; 
+}
+
+.search-bar__form {
+  display: inline-block;
+  width: 80%;
+}
+
+.search-bar__form__input {
+  width: 100%;
+  border: none;
+  outline: none;
+  padding: 0.5em;
+  font-size: 0.95rem;
+  background-color: transparent;
+}
+
+.search-bar__form__input::placeholder {
+  font-size: 0.9em; 
+  color: #999; 
+}

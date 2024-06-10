@@ -1,0 +1,192 @@
+.search {
+  height: 100%;
+  width: 100%;
+  margin-top: 3.5em;
+  margin-bottom: 1em;
+}
+.search__header {
+  height: 5em;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  margin-bottom: 1em;
+}
+
+.search__header__title {
+  font-weight: 600;
+  font-size: 1.15rem;
+  margin-left: 1em;
+}
+
+.search__chips-container {
+  margin-bottom: 0.5em;
+}
+.search__gallery {
+  margin: 0 0.5em;
+  display: grid;
+  grid-gap: 0.5em; 
+  grid-template-columns: repeat(auto-fill, minmax(15em, 1fr));
+  grid-auto-rows: 0; 
+  margin-bottom: 3em;
+  position: relative;
+}
+.search__pagination {
+  display: flex;
+  flex-direction: column;
+  margin: 1em 0.5em;
+  height: 15em;
+}
+.search__pagination__next-page {
+  max-width: 100%;
+  width: 100%;
+  text-align: center;
+  margin-bottom: 1em;
+  padding-bottom: 1em;
+  border-bottom: 1px solid gainsboro;
+}
+.search__pagination__next-page__button {
+  width: 100%;
+  max-width: 100%;
+  border-radius: 2em;
+  background-color: transparent;
+  color: rgb(43, 43, 43);
+  font-size: 0.85rem;
+  font-weight: 600;
+  border: 1px solid rgb(161, 161, 161);
+  height: 2.75em;
+}
+.search__pagination__bottom {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.search__pagination__info {
+  color:rgb(48, 48, 48);
+  font-size: 0.75rem;
+  flex: 1;
+}
+.search__pagination__controler {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  align-items: center;
+}
+.search__pagination__controler__button {
+  border: none;
+  background-color: transparent;
+  height: 3em;
+  min-width: 3em;
+  padding: 0;
+  font-size: 0.65rem;
+}
+.search__pagination__controler__form {
+  margin: 0 0.25em;
+  width: 100%;
+}
+.search__pagination__controler__form__input {
+  height: 2em;
+  width: 2em;
+  border-radius: 0.25em;
+  border: 1px solid rgb(161, 161, 161);
+  text-align: center;
+}
+.search__pagination__controler__form__span {
+  color:black;
+  font-size: 0.75rem;
+  margin-left: 0.5em;
+}
+.search__pagination--desktop {
+  display: none;
+}
+@media (min-width: 1200px) { 
+  .search__gallery {
+    margin: 0 1.5em;
+    display: grid;
+    grid-gap: 0.75em;
+    grid-template-columns: repeat(auto-fill, minmax(18.5em, 1fr)); 
+    grid-auto-rows: 0; 
+  }
+  .search__header {
+    height: 5em;
+    margin-bottom: 1.5em;
+  }
+  .search__header__title {
+    font-size: 1.4rem;
+    margin-left: 2em;
+  }
+  .search__pagination {
+    display: none;
+  }
+  .search__pagination--desktop {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 1.5em;
+  }
+  .search__pagination__next-page {
+    width: 10em;
+    text-align: center;
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+  }
+  .search__pagination__next-page__button {
+    border-radius: 2em;
+    background-color: transparent;
+    color: rgb(43, 43, 43);
+    font-size: 0.85rem;
+    font-weight: 600;
+    border: 1px solid rgb(161, 161, 161);
+    height: 2.75em;
+    cursor: pointer;
+    transition: border 300ms ease;
+  }
+  .search__pagination__next-page__button:hover {
+    border: 1px solid black;
+  }
+  .search__pagination__info {
+    color:rgb(48, 48, 48);
+    font-size: 0.75rem;
+    width: fit-content;
+  }
+  .search__pagination__controler {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    justify-content: right;
+    align-items: center;
+  }
+  .search__pagination__controler__button {
+    border: none;
+    background-color: transparent;
+    height: 3em;
+    min-width: 3em;
+    padding: 0;
+    font-size: 0.65rem;
+    border-radius: 50%;
+    transition: background-color 300ms ease;
+    cursor: pointer;
+  }
+  .search__pagination__controler__button:hover {
+    background-color: rgba(220, 220, 220, 0.385);
+  }
+  .search__pagination__controler__form {
+    margin: 0 0.25em;
+    width: fit-content;
+  }
+  .search__pagination__controler__form__input {
+    height: 2em;
+    width: 2em;
+    border-radius: 0.25em;
+    border: 1px solid rgb(161, 161, 161);
+    text-align: center;
+  }
+  .search__pagination__controler__form__span {
+    color:black;
+    font-size: 0.75rem;
+    margin-left: 0.5em;
+  }
+}

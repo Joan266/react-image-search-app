@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const favSlice = createSlice({
+const FavSlice = createSlice({
   name: 'fav',
   initialState: {
     status: "idle",
@@ -37,5 +37,5 @@ const favSlice = createSlice({
   }),
 })
 
-export const { setFavs, addFav, updateFavDescription, deleteFav } = favSlice.actions;
-export const favSliceReducer = favSlice.reducer;
+export const { setFavs, addFav, updateFavDescription, deleteFav } = FavSlice.actions;
+export const FavSliceReducer = FavSlice.reducer;

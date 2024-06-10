@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit'
-import { searchSliceReducer } from './slices/searchSlice'
-import { favSliceReducer } from './slices/favSlice'
+import { SearchSliceReducer } from './slices/SearchSlice/SearchSlice.js'
+import { RandomSliceReducer } from './slices/RandomSlice/RandomSlice.js'
+import { FavSliceReducer } from './slices/FavSlice.js'
 export const store = configureStore({
   reducer: {
-    search: searchSliceReducer,
-    fav: favSliceReducer,
+    search: SearchSliceReducer,
+    random:RandomSliceReducer,
+    fav: FavSliceReducer,
   },
 })
