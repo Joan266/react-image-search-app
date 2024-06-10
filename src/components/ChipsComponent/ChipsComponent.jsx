@@ -10,10 +10,10 @@ const shuffleArray = (array) => {
 };
 export const ChipsComponent = () => {
   const searchWords = [
-    "naturaleza", "paisaje", "ciudad", "viaje", "playa", "montaña", 
+    "naturaleza", "paisaje", "ciudad", "viaje", "playa", "montaña", "selva",
     "arquitectura",   "animales",  "comida", "tecnología", 
      "construcción","niños","pareja","familia","flor","insecto","jardin",
-    "cielo", "agua", "perro","gato","mujer","hombre","bosque",
+    "cielo", "agua", "perro","gato","mujer","hombre","bosque","desierto"
   ];
   const navigate = useNavigate();
   const [shuffledWords, setShuffledWords] = useState([]);

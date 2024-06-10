@@ -181,6 +181,7 @@
   }
   .details__info__description {
     padding: 1em ; 
+    border-bottom: 1px solid gainsboro;
   }
   
   .details__info__description__text {
