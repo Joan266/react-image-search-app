@@ -13,7 +13,7 @@ import "./PhotoPage.css"
 export const PhotoPage = () => {
   const location = useLocation();
   const { image } = location.state || {}; 
-  const { isPhotoFav, handleToggleFav, photoDescription } = useIsPhotoFav(image);
+  const { isPhotoFav, handleToggleFav } = useIsPhotoFav(image);
   const [isEditDescription, setIsEditDescription] = useState(false);
   const navigate = useNavigate();
 useEffect(()=> {console.log(image)},[])
@@ -45,14 +45,14 @@ useEffect(()=> {console.log(image)},[])
         <>
           {isEditDescription && (
             <EditDescriptionPopupComponent
-              photoDescription={photoDescription}
+              photoDescription={image.description}
               image={image}
               setIsEditDescription={setIsEditDescription}
             />
           )}
           <section className="details">
             <article className="details__container">
-              <img className="details__container__img" src={image.urls.regular} alt={image.alt_description} />
+              <img className="details__container__img" src={image.urls.regular} alt={image.description} />
             </article>
             <article className="details__info">
               <section className="details__info__data">
@@ -62,8 +62,8 @@ useEffect(()=> {console.log(image)},[])
                 {image.height && <div className="details__info__data__item"><p>Height</p> <span>{image.height}</span></div>}
                 {image.width && <div className="details__info__data__item"><p>Width</p> <span>{image.width}</span></div>}
               </section>
-              {photoDescription && <section className="details__info__description">
-                <p className="details__info__description__text">{photoDescription}</p>
+              {image.description && <section className="details__info__description">
+                <p className="details__info__description__text">{image.description}</p>
               </section>}
               <section className="details__info__actions">
                 {isPhotoFav && (

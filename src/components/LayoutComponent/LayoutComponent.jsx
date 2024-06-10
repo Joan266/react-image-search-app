@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { NavComponent } from '../NavComponent/NavComponent.jsx';
 
-import { setFavs } from '../../slices/FavSlice.js';
+import { setFavs } from '../../slices/favSlice.js';
 export const LayoutComponent = () => {  
   const dispatch = useDispatch();
   const { data: favData } = useSelector((state) => state.fav);

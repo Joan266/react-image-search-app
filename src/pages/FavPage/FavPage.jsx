@@ -1,4 +1,4 @@
-import { deleteFav } from "../../slices/FavSlice";
+import { deleteFav } from "../../slices/favSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useState,useEffect,useRef } from "react";
@@ -17,6 +17,8 @@ export const FavPage = () => {
   const [inputData, setInputData] = useState("");
   const [favDataMutation, setFavDataMutation] = useState(null);
 
+  const renderFavData = favDataMutation || favData;
+
   const handleRemoveFav = (event, image) => {
     event.stopPropagation();
     dispatch(deleteFav(image));
@@ -27,7 +29,7 @@ export const FavPage = () => {
   };
 
   const handleChange = (event) => {
-    setInputData(event.target.value.trim());
+    setInputData(event.target.value);
   };
 
   const handleSortItemChange = (event) => {
@@ -52,14 +54,26 @@ export const FavPage = () => {
     event.stopPropagation();
     FileSaver.saveAs(image_urls_raw, "oxygen-photo.jpg");
   };
-  const handleSubmit = (event) => {
-    event.preventDefault();
+  useEffect(() => {
+    if (inputData.trim() === "") {
+      setFavDataMutation(null);
+      return;
+    }
+  
     const filteredFavData = favData.filter((favImage) => {
-      const description = favImage.description !== undefined && favImage.description !== null ? favImage.description : favImage.alt_description;
-      return description.toLowerCase().includes(inputData.toLowerCase());
+      const description = favImage.description ? favImage.description.trim() : "";
+      if (description) {
+        const lowercasedDescription = description.toLowerCase();
+        const searchQuery = inputData.toLowerCase();
+        return lowercasedDescription.includes(searchQuery);
+      }
+      return false;
     });
+  
     setFavDataMutation(filteredFavData);
-  };
+  }, [inputData]);
+  
+ 
   useEffect(() => {
     const resizeAllMasonryItems = () => {
       const grid = favGalleryRef.current;
@@ -69,7 +83,7 @@ export const FavPage = () => {
       const rowHeight = parseInt(window.getComputedStyle(grid).getPropertyValue('grid-auto-rows'));
       const columnWidth = parseInt(window.getComputedStyle(grid).getPropertyValue('grid-template-columns').split(' ')[0]);
   
-      favData.forEach(image => {
+      renderFavData.forEach(image => {
         const item = document.getElementById(image.id);
         if (item) {
           const imageHeight = (columnWidth) * image.height / image.width;
@@ -85,9 +99,8 @@ export const FavPage = () => {
     return () => {
       window.removeEventListener('resize', resizeAllMasonryItems);
     };
-  }, [favData]);
+  }, [renderFavData]);
 
-  const renderFavData = favDataMutation || favData;
 
   return (
     <div className="fav-page">
@@ -107,7 +120,7 @@ export const FavPage = () => {
                 className="search-bar__icon"
                 alt="search icon"
               ></img>
-              <form onSubmit={handleSubmit} className="search-bar__form">
+              <form className="search-bar__form" onSubmit={(event)=>event.preventDefault()}>
                 <input
                   placeholder="Buscar descripción"
                   onChange={handleChange}
