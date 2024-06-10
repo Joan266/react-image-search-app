@@ -129,7 +129,7 @@
   background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
 }
 .fav-page__gallery__item__description {
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   color:white;
   text-align: center;
   margin: 0 0.5em;
@@ -146,7 +146,7 @@
 .fav-page__gallery__item__pill {
   background-color: rgba(0, 0, 0, 0.6);
   color: white;
-  font-size: 0.6rem;
+  font-size: 0.5rem;
   border-radius: 0.5em;
   padding: 0.25em 0.6em;
   font-weight: 600;
