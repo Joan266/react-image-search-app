@@ -109,7 +109,7 @@ export const FavPage = () => {
               ></img>
               <form onSubmit={handleSubmit} className="search-bar__form">
                 <input
-                  placeholder="Busqueda"
+                  placeholder="Buscar descripción"
                   onChange={handleChange}
                   value={inputData}
                   className="search-bar__form__input"

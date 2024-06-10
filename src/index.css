@@ -66,3 +66,12 @@ input[type="number"] {
 input[type="number"] {
     appearance: none;
 }
+
+@keyframes fade {
+  from {
+    opacity: 0.4;
+  }
+  to {
+    opacity: 1;
+  }
+}
