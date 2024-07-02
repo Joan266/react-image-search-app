@@ -133,7 +133,6 @@ export const FavPage = () => {
           <div className="fav-page__header__select-filter-container">
             <select className="sort-order" onChange={handleSortItemChange} defaultValue="">
               <option className="sort-order__item" value="" disabled>Ordenar por</option>
-              <option className="sort-order__item" value="importDate">Import Date</option>
               <option className="sort-order__item" value="width">Width</option>
               <option className="sort-order__item" value="height">Height</option>
               <option className="sort-order__item" value="likes">Likes</option>

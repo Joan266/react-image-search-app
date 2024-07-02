@@ -5,7 +5,7 @@
   margin-bottom: 1em;
 }
 .search__header {
-  height: 5em;
+  height: 3.5em;
   width: 100%;
   display: flex;
   align-items: center;
@@ -14,8 +14,8 @@
 }
 
 .search__header__title {
-  font-weight: 600;
-  font-size: 1.15rem;
+  font-weight: 500;
+  font-size: 1rem;
   margin-left: 1em;
 }
 
@@ -29,6 +29,7 @@
   grid-template-columns: repeat(auto-fill, minmax(15em, 1fr));
   grid-auto-rows: 0; 
   margin-bottom: 3em;
+  min-height: 30em;
   position: relative;
 }
 .search__pagination {
@@ -113,7 +114,7 @@
     margin-bottom: 1.5em;
   }
   .search__header__title {
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     margin-left: 2em;
   }
   .search__pagination {

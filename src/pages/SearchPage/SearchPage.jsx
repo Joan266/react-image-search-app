@@ -121,7 +121,9 @@ export const SearchPage = () => {
   return (
     <div className="search">
       <section className="search__header">
-        <h1 className="search__header__title">Fotos gratis {query ? `de ${query}` : "aleatorias"}</h1>
+        <h1 className="search__header__title">
+          Fotos gratis {query ? <>de <strong>{query}</strong></> : "aleatorias"}
+        </h1>
       </section>
       <section className="home__chips-container">
         <ChipsComponent />
@@ -132,7 +134,7 @@ export const SearchPage = () => {
             <span></span>
           </div>
         )}
-        {images && images.length > 0 ? (
+        {images && images.length > 0 && status === "fulfilled" ? (
           images.map((image, index) => (
             <GalleryCardComponent image={image} key={`${image.id}${index}`} />
           ))
@@ -140,7 +142,7 @@ export const SearchPage = () => {
           status === 'fulfilled' && <p>No se encontraron imágenes.</p>
         )}
       </section>
-      {images && images.length > 0 &&
+      {(images && images.length > 0 && status === "fulfilled") && 
       <>
         <section className="search__pagination search__pagination--desktop">
           <span className="search__pagination__info">{`1-${count} de ${total} imágenes`}</span>
